@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Is Remind Me? — The Complete Guide to Remind Me: 24h Blueprint</title>
+  <meta name="description" content="What is Remind Me: 24h Blueprint? Discover how this offline, keyboard-first daily planner helps you build repeatable schedule templates, block time, and reduce routine friction." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #0c1017;
+      --bg-surface: #131924;
+      --bg-surface-elevated: #182232;
+      --border-page: #222d3d;
+      --border-subtle: #192231;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      /* Authentic App Palette */
+      --app-cobalt: #0022f5;
+      --app-cobalt-glow: rgba(0, 34, 245, 0.35);
+      --app-cyan-brand: #06b6d4;
+      --app-block-green: #9edaa7;
+      --app-block-green-border: #62b370;
+      --app-block-orange: #fed699;
+      --app-block-orange-border: #f59e0b;
+      --app-chip-bg: #fef3c7;
+      --app-chip-border: #fcd34d;
+      --app-purple-save: #4a148c;
+      --app-time-pill-bg: #e0f2fe;
+      --app-time-pill-border: #7dd3fc;
+      --app-time-pill-text: #0284c7;
+
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(ellipse 80% 40% at 50% -10%, rgba(0, 34, 245, 0.15), transparent 70%),
+        radial-gradient(circle at 90% 25%, rgba(6, 182, 212, 0.06), transparent 40%),
+        radial-gradient(circle at 10% 70%, rgba(249, 115, 22, 0.04), transparent 45%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Top Status Bar */
+    .top-status-bar {
+      background: #080d14;
+      border-bottom: 1px solid var(--border-page);
+      font-size: 0.8rem;
+      padding: 7px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      color: #38bdf8;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 6px #38bdf8;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* Header */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: rgba(12, 16, 23, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-page);
+      padding: 12px 24px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .bell-icon-cyan {
+      width: 26px;
+      height: 26px;
+      color: var(--app-cyan-brand);
+      filter: drop-shadow(0 2px 6px rgba(6, 182, 212, 0.4));
+    }
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .brand-tag {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--text-muted);
+      margin-left: 6px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-link {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #fff;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      border: none;
+      font-family: var(--font-sans);
+    }
+    .btn-cobalt {
+      background: var(--app-cobalt);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 34, 245, 0.35);
+    }
+    .btn-cobalt:hover {
+      background: #1a3bff;
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      border: 1px solid var(--border-page);
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #3b4b63;
+    }
+
+    /* Article Container Layout */
+    .article-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 50px 24px 90px;
+    }
+
+    /* Article Header */
+    .article-meta-header {
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border-page);
+      padding-bottom: 30px;
+    }
+    .article-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+    .article-breadcrumb a:hover {
+      color: #38bdf8;
+    }
+    .article-category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: rgba(0, 34, 245, 0.15);
+      border: 1px solid rgba(0, 34, 245, 0.35);
+      color: #93c5fd;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    h1.article-title {
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.18;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .article-intro-p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .article-info-pill {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
+      flex-wrap: wrap;
+    }
+
+    /* In-Article Key Callout Box */
+    .summary-callout-card {
+      background: linear-gradient(145deg, #141c2b, #0f1623);
+      border: 1px solid #283952;
+      border-left: 4px solid #38bdf8;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin: 32px 0 45px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+    .summary-callout-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .summary-callout-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+    .summary-callout-card a.link-accent {
+      color: #38bdf8;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 600;
+    }
+    .summary-callout-card a.link-accent:hover {
+      color: #7dd3fc;
+    }
+
+    /* Table of Contents Floating Menu */
+    .toc-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-page);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+    }
+    @media (max-width: 680px) {
+      .toc-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    .toc-list a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: color 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .toc-list a:hover {
+      color: #fff;
+    }
+    .toc-list a::before {
+      content: '›';
+      color: #38bdf8;
+      font-weight: bold;
+    }
+
+    /* Section Content Styling */
+    .article-section {
+      margin-bottom: 50px;
+      scroll-margin-top: 85px;
+    }
+    h2.faq-question {
+      font-size: clamp(1.45rem, 2.5vw, 1.85rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 16px;
+      line-height: 1.35;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    h2.faq-question .q-num {
+      color: #38bdf8;
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      padding-top: 3px;
+    }
+    .article-section p {
+      font-size: 1.02rem;
+      color: #cbd5e1;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .article-section p strong {
+      color: #ffffff;
+    }
+    .article-section ul, .article-section ol {
+      margin: 16px 0 24px 20px;
+      color: #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .article-section li {
+      line-height: 1.65;
+    }
+
+    /* Embedded Authentic UI Previews */
+    .ui-mockup-embed {
+      background: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.45);
+      margin: 28px 0 32px;
+      border: 1px solid #d5dae2;
+    }
+    .mock-win-titlebar {
+      background: #f1f3f9;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #d5dae2;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #334155;
+    }
+    .mock-win-titlebar svg {
+      width: 15px;
+      height: 15px;
+      color: var(--app-cyan-brand);
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    .mock-win-body {
+      padding: 18px 20px;
+      color: #0f172a;
+    }
+
+    /* Pastel Time Blocks Inside Embed */
+    .canvas-block {
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      position: relative;
+    }
+    .canvas-block.block-green {
+      background: var(--app-block-green);
+      border: 1.5px solid var(--app-block-green-border);
+    }
+    .canvas-block.block-orange {
+      background: var(--app-block-orange);
+      border: 1.5px solid var(--app-block-orange-border);
+      box-shadow: 0 0 14px rgba(251, 191, 36, 0.45);
+    }
+    .block-header-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .time-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .time-pill-num {
+      background: var(--app-time-pill-bg);
+      border: 1px solid var(--app-time-pill-border);
+      color: var(--app-time-pill-text);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 4px;
+      min-width: 22px;
+      text-align: center;
+    }
+    .time-badge-sep {
+      color: #64748b;
+      font-weight: 700;
+      font-size: 0.72rem;
+      margin: 0 2px;
+    }
+    .block-title-text {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: #0f172a;
+    }
+
+    /* Word Completer Popover Inside Embed */
+    .autocomplete-popover-embed {
+      position: relative;
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 6px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      margin-top: 8px;
+      max-width: 220px;
+    }
+    .autocomplete-row-embed {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px;
+      font-size: 0.75rem;
+      color: #1e293b;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .autocomplete-row-embed:last-child {
+      border-bottom: none;
+    }
+    .kbd-tag-pill {
+      background: #e0f2fe;
+      border: 1px solid #7dd3fc;
+      color: #0284c7;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    /* ADHD Mode Widget Embed */
+    .adhd-mode-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid #0284c7;
+      background: #ffffff;
+      border-radius: 9999px;
+      padding: 4px 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #0284c7;
+    }
+    .adhd-switch {
+      position: relative;
+      width: 32px;
+      height: 18px;
+      background: #f97316;
+      border-radius: 9999px;
+    }
+    .adhd-switch-knob {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 14px;
+      height: 14px;
+      background: #ffffff;
+      border-radius: 50%;
+    }
+
+    /* Comparison Table */
+    .table-container {
+      overflow-x: auto;
+      margin: 28px 0 32px;
+      border-radius: 10px;
+      border: 1px solid var(--border-page);
+    }
+    table.comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+      background: var(--bg-surface);
+    }
+    table.comparison-table th {
+      background: #0f1622;
+      color: #fff;
+      font-weight: 700;
+      padding: 14px 16px;
+      border-bottom: 2px solid var(--border-page);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+    }
+    table.comparison-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    table.comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+    table.comparison-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    table.comparison-table td.highlight-remindme {
+      background: rgba(0, 34, 245, 0.05);
+      color: #f1f5f9;
+      font-weight: 500;
+    }
+
+    /* In-Article Interactive Sound Test Widget */
+    .audio-test-widget {
+      background: #111a28;
+      border: 1px solid #24344d;
+      border-radius: 8px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 20px 0;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Final CTA Card */
+    .final-cta-card {
+      background: linear-gradient(180deg, #131926 0%, #0c1017 100%);
+      border: 1px solid var(--border-page);
+      border-radius: 14px;
+      padding: 44px 28px;
+      text-align: center;
+      margin-top: 60px;
+      position: relative;
+    }
+    .final-cta-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 240px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+    }
+    .final-cta-title {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .final-cta-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 580px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer.site-footer {
+      padding: 40px 24px;
+      border-top: 1px solid var(--border-page);
+      font-size: 0.84rem;
+      color: var(--text-dim);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-nav {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-nav a:hover {
+      color: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Indie Status Bar -->
+  <div class="top-status-bar">
+    <span class="status-badge"><span class="status-dot"></span> Active Indie Project</span>
+    <span>Official Project Guide: <strong>Remind Me: 24h Blueprint</strong> by Janis Flury (Frog1230)</span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/" class="brand-mark">
+        <svg class="bell-icon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        <span class="brand-title">Remind Me</span>
+        <span class="brand-tag">24h Blueprint</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/" class="nav-link">Home</a>
+        <a href="#toc" class="nav-link active">FAQ Guide</a>
+        <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/#download" class="nav-link">Downloads</a>
+      </nav>
+
+      <div style="display: flex; gap: 10px;">
+        <a href="https://frog1230.itch.io/remind-me-web-demo" class="btn btn-outline" target="_blank" rel="noopener">
+          Try Web Demo
+        </a>
+        <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/" class="btn btn-cobalt">
+          Official Site
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Article Content Area -->
+  <main class="article-wrap">
+    <article>
+      <!-- Article Meta Header -->
+      <header class="article-meta-header">
+        <div class="article-breadcrumb">
+          <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/">Home</a>
+          <span>/</span>
+          <span>Guides &amp; Overview</span>
+          <span>/</span>
+          <span>What Is Remind Me?</span>
+        </div>
+
+        <div class="article-category-badge">
+          <span>📘 Product Guide &amp; FAQ</span>
+        </div>
+
+        <h1 class="article-title">What Is Remind Me?</h1>
+
+        <p class="article-intro-p">
+          When evaluating productivity tools, it is easy to feel overwhelmed by the sheer number of digital calendars, to-do list managers, and complex project platforms available today. Many of these tools require continuous internet access, extensive configuration, and hours of administrative upkeep just to maintain a basic daily schedule.
+        </p>
+
+        <div class="article-info-pill">
+          <span>By <strong>Janis Flury (Frog1230)</strong></span>
+          <span>•</span>
+          <span>Updated: September 2026</span>
+          <span>•</span>
+          <span>Reading Time: 8 min</span>
+          <span>•</span>
+          <span>Topic: Offline Routine Planning</span>
+        </div>
+      </header>
+
+      <!-- Key Callout Card with Natural Link Near Beginning -->
+      <div class="summary-callout-card">
+        <div class="summary-callout-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>Quick Overview</span>
+        </div>
+        <p>
+          If you have been looking for a more direct, lightweight way to structure your day without bloated cloud logins or repetitive manual entry, you may have come across <strong>Remind Me: 24h Blueprint</strong>. You can explore the project and its release history directly on the <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/" class="link-accent">official Remind Me website</a>. Below is an in-depth FAQ explaining the architecture, purpose, and workflow of the software.
+        </p>
+      </div>
+
+      <!-- Table of Contents -->
+      <nav class="toc-box" id="toc" aria-label="Table of Contents">
+        <div class="toc-title">Table of Contents</div>
+        <ul class="toc-list">
+          <li><a href="#what-is-remind-me">What Is Remind Me: 24h Blueprint?</a></li>
+          <li><a href="#what-can-it-be-used-for">What Can Remind Me Be Used For?</a></li>
+          <li><a href="#how-repeatable-schedules-work">How Do Repeatable Schedules Work?</a></li>
+          <li><a href="#daily-planning">Can Remind Me Be Used for Daily Planning?</a></li>
+          <li><a href="#reduce-friction">How Does It Reduce Planning Friction?</a></li>
+          <li><a href="#works-offline">Does Remind Me Work Offline?</a></li>
+          <li><a href="#keyboard-shortcuts">Does It Support Keyboard Shortcuts?</a></li>
+          <li><a href="#pomodoro-timer">Does It Include a Pomodoro Timer?</a></li>
+          <li><a href="#who-is-it-for">Who Is Remind Me Designed For?</a></li>
+          <li><a href="#why-templates">Why Use Repeatable Schedule Templates?</a></li>
+          <li><a href="#different-from-traditional">What Makes Remind Me Different?</a></li>
+          <li><a href="#learn-more">Where Can You Learn More?</a></li>
+        </ul>
+      </nav>
+
+      <!-- Question 1 -->
+      <section class="article-section" id="what-is-remind-me">
+        <h2 class="faq-question">
+          <span class="q-num">01.</span>
+          <span>What Is Remind Me: 24h Blueprint?</span>
+        </h2>
+        <p>
+          <strong>Remind Me: 24h Blueprint is an offline daily planner designed to help people quickly build schedules, organize tasks, create time blocks, and reuse repeatable routines.</strong>
+        </p>
+        <p>
+          Rather than attempting to be an all-in-one corporate suite or a multi-layered project management system, Remind Me focuses on a specific challenge: <strong>reducing the friction of planning recurring days and routines</strong>. The software emphasizes speed, tactile keyboard input, and template reusability, allowing users to map out a 24-hour day in seconds rather than minutes.
+        </p>
+
+        <!-- Visual UI Embed: Authentic Block Appearance -->
+        <div class="ui-mockup-embed">
+          <div class="mock-win-titlebar">
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              <span>Remind Me — Template Editor</span>
+            </div>
+            <span style="font-family:var(--font-mono); font-size:0.7rem; color:#64748b;">Block &amp; Task Layout</span>
+          </div>
+          <div class="mock-win-body">
+            <!-- Green Block -->
+            <div class="canvas-block block-green">
+              <div class="block-header-line">
+                <div class="time-badge-group">
+                  <span class="time-pill-num">08</span>
+                  <span class="time-pill-num">00</span>
+                  <span class="time-badge-sep">-</span>
+                  <span class="time-pill-num">09</span>
+                  <span class="time-pill-num">00</span>
+                </div>
+                <span style="font-size:0.75rem; color:#166534; font-family:var(--font-mono);">✓ 60 MIN</span>
+              </div>
+              <div class="block-title-text">Morning Prep &amp; Coffee</div>
+            </div>
+
+            <!-- Orange Highlight Block with Amber Glow -->
+            <div class="canvas-block block-orange">
+              <div class="block-header-line">
+                <div class="time-badge-group">
+                  <span class="time-pill-num" style="background:#fff; border-color:#f59e0b; color:#b45309;">10</span>
+                  <span class="time-pill-num" style="background:#fff; border-color:#f59e0b; color:#b45309;">00</span>
+                  <span class="time-badge-sep">-</span>
+                  <span class="time-pill-num" style="background:#fff; border-color:#f59e0b; color:#b45309;">13</span>
+                  <span class="time-pill-num" style="background:#fff; border-color:#f59e0b; color:#b45309;">00</span>
+                </div>
+                <span style="font-size:0.75rem; color:#9a3412; font-family:var(--font-mono); font-weight:600;">ACTIVE FOCUS</span>
+              </div>
+              <div class="block-title-text" style="color:#78350f;">Deep Work: System Architecture</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Question 2 -->
+      <section class="article-section" id="what-can-it-be-used-for">
+        <h2 class="faq-question">
+          <span class="q-num">02.</span>
+          <span>What Can Remind Me Be Used For?</span>
+        </h2>
+        <p>
+          At its core, Remind Me serves as a practical, lightweight routine planner and schedule planner. Common use cases include:
+        </p>
+        <ul>
+          <li><strong>Daily Time Blocking:</strong> Dividing the day into dedicated segments for deep work, study, meetings, chores, fitness, and recovery.</li>
+          <li><strong>Routine Automation:</strong> Designing a balanced "ideal day" once and stamping it onto multiple dates across a calendar grid.</li>
+          <li><strong>Task Organization:</strong> Nesting individual actionable to-dos directly inside broader time blocks so you always know what to work on during a given hour.</li>
+          <li><strong>Focus Management:</strong> Running focused intervals using an integrated Pomodoro timer without switching to another browser tab or utility.</li>
+          <li><strong>Transition Cueing:</strong> Using customizable audio alerts and reminders to signal when it is time to wrap up one block and move on to the next.</li>
+        </ul>
+      </section>
+
+      <!-- Question 3 -->
+      <section class="article-section" id="how-repeatable-schedules-work">
+        <h2 class="faq-question">
+          <span class="q-num">03.</span>
+          <span>How Do Repeatable Schedules Work?</span>
+        </h2>
+        <p>
+          In many traditional calendar applications, setting up a recurring routine can be surprisingly tedious. If your routine does not strictly follow a rigid recurring rule—or if you want to experiment with different day types like "Deep Work Days," "Class Schedules," or "Weekend Resets"—you often have to recreate schedules by dragging and dropping blocks manually.
+        </p>
+        <p>
+          Remind Me approaches scheduling through <strong>schedule templates</strong>:
+        </p>
+        <ol>
+          <li><strong>Create Once:</strong> You assemble a sequence of time blocks and tasks within the template editor (e.g., an 8:00 AM–12:00 PM focus block, followed by lunch, study, and exercise).</li>
+          <li><strong>Save as a Blueprint:</strong> The routine is saved under a distinct name in your local library.</li>
+          <li><strong>Stamp onto Any Day:</strong> In the month calendar view, you select your template and apply it to any date with a single click.</li>
+        </ol>
+        <p>
+          This architecture means you do not need to rebuild your day from scratch every morning. It turns routine planning into an intentional choice: select the blueprint that matches your day, apply it, and start working.
+        </p>
+      </section>
+
+      <!-- Question 4 -->
+      <section class="article-section" id="daily-planning">
+        <h2 class="faq-question">
+          <span class="q-num">04.</span>
+          <span>Can Remind Me Be Used for Daily Planning?</span>
+        </h2>
+        <p>
+          Yes. While Remind Me excels at template reuse, it is fundamentally built around <strong>single-day scheduling</strong>.
+        </p>
+        <p>
+          Users can navigate day by day, view a 24-hour timeline blueprint, edit individual blocks, or tweak tasks for a specific date while keeping the broader routine intact. Applying a template does not lock your schedule in stone; you can adjust specific hours, add one-off tasks, or delete blocks for a particular date without altering the original master template. This gives you the consistency of a structured routine alongside the flexibility needed for unexpected real-world changes.
+        </p>
+      </section>
+
+      <!-- Question 5 -->
+      <section class="article-section" id="reduce-friction">
+        <h2 class="faq-question">
+          <span class="q-num">05.</span>
+          <span>How Does Remind Me Help Reduce Planning Friction?</span>
+        </h2>
+        <p>
+          A major reason people abandon daily planners is "planning fatigue"—the cognitive effort required simply to set up the schedule. When starting a planner feels like a chore, it often fuels procrastination rather than preventing it.
+        </p>
+        <p>
+          Remind Me reduces this friction through several deliberate design choices:
+        </p>
+        <ul>
+          <li><strong>Eliminating Repetitive Input:</strong> By relying on repeatable schedules, the routine tasks you perform every week are already entered.</li>
+          <li><strong>Keyboard-First Speed:</strong> You can add, edit, and navigate schedule entries using keyboard shortcuts rather than clicking through multi-layered modal windows.</li>
+          <li><strong>ADHD-Friendly Reminders:</strong> For individuals who struggle with time blindness, executive dysfunction, or hyperfocus, shifting between tasks is often the hardest part of the day. Remind Me includes transition prompts and interval reminders designed to gently disrupt inertia and encourage timely transitions before a new activity begins.</li>
+          <li><strong>Auditory Anchors:</strong> Users can set custom reminder sounds and adjust volume levels to ensure alerts are audible and distinctive enough to act as real behavioral triggers.</li>
+        </ul>
+
+        <!-- ADHD Mode Widget Visual -->
+        <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:14px 18px; margin:20px 0; color:#0f172a; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <div>
+            <div style="font-weight:700; font-size:0.88rem; color:#0f172a;">Built-In ADHD Mode</div>
+            <div style="font-size:0.75rem; color:#64748b;">Interval countdown warnings before block transitions</div>
+          </div>
+          <div class="adhd-mode-pill">
+            <span>ADHD Mode</span>
+            <div class="adhd-switch">
+              <div class="adhd-switch-knob"></div>
+            </div>
+            <span style="font-size:0.75rem; color:#0284c7;">10 min ▼</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Question 6 -->
+      <section class="article-section" id="works-offline">
+        <h2 class="faq-question">
+          <span class="q-num">06.</span>
+          <span>Does Remind Me Work Offline?</span>
+        </h2>
+        <p>
+          Yes. Remind Me: 24h Blueprint is a <strong>100% offline daily planner</strong>.
+        </p>
+        <p>
+          It does not require an active internet connection, a user account, or a subscription login. Everything runs locally on your device, and your schedules are saved directly to your local machine.
+        </p>
+        <p>
+          Operating offline provides two main advantages:
+        </p>
+        <ol>
+          <li><strong>Focus:</strong> Without cloud sync status checks, web notifications, or browser dependencies, there are fewer distractions pulling your attention away from your work.</li>
+          <li><strong>Privacy and Reliability:</strong> Your personal schedule, habits, and work notes remain on your own hardware. The software functions identically whether you are in an office, on an airplane, or working in an area without reliable internet access.</li>
+        </ol>
+      </section>
+
+      <!-- Question 7 -->
+      <section class="article-section" id="keyboard-shortcuts">
+        <h2 class="faq-question">
+          <span class="q-num">07.</span>
+          <span>Does Remind Me Support Keyboard Shortcuts?</span>
+        </h2>
+        <p>
+          Yes. Fast, keyboard-supported planning is one of the software’s central pillars.
+        </p>
+        <p>
+          Instead of requiring continuous mouse navigation to select time ranges, choose categories, and save items, Remind Me is built to keep your hands on the home row. 
+        </p>
+        <p>
+          A notable feature is its <strong>manual word completion system</strong>, which is connected to a built-in dictionary containing <strong>more than 1,000 words</strong>. As you type an activity into a block, the application suggests common tasks and routine descriptors that can be completed instantly using hotkeys such as <code style="color:#38bdf8; font-family:var(--font-mono); background:#1a2434; padding:2px 6px; border-radius:4px;">Tab</code> or <code style="color:#38bdf8; font-family:var(--font-mono); background:#1a2434; padding:2px 6px; border-radius:4px;">Alt</code>. This allows schedule creation to feel closer to writing in a streamlined code editor or command palette than filling out an administrative form.
+        </p>
+
+        <!-- Visual UI Embed: Authentic Word Completer Popup from 00:03/00:04 -->
+        <div style="background:#ffffff; border:1.5px solid #cbd5e1; border-radius:8px; padding:16px; margin:22px 0; color:#0f172a;">
+          <div style="font-size:0.75rem; font-family:var(--font-mono); color:#64748b; margin-bottom:8px;">
+            WORD COMPLETER IN ACTION
+          </div>
+          <div style="background:#9edaa7; border:1.5px solid #62b370; border-radius:6px; padding:10px 12px;">
+            <div style="font-size:0.88rem; font-weight:700; color:#0f172a;">
+              morn<span style="display:inline-block; width:2px; height:14px; background:#0284c7; vertical-align:middle; margin-left:2px;"></span>
+            </div>
+            <!-- Popover -->
+            <div class="autocomplete-popover-embed">
+              <div class="autocomplete-row-embed">
+                <span>morning</span>
+                <span class="kbd-tag-pill">Alt</span>
+              </div>
+              <div class="autocomplete-row-embed" style="background:#f8fafc;">
+                <span><strong>Morning</strong> Prep</span>
+                <span class="kbd-tag-pill">Tab</span>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:8px; font-size:0.72rem; color:#64748b; font-family:var(--font-mono);">
+            Connected to 1,000+ word dictionary for instant schedule completion.
+          </div>
+        </div>
+      </section>
+
+      <!-- Question 8 -->
+      <section class="article-section" id="pomodoro-timer">
+        <h2 class="faq-question">
+          <span class="q-num">08.</span>
+          <span>Does Remind Me Include a Pomodoro Timer?</span>
+        </h2>
+        <p>
+          Yes. Remind Me includes a <strong>built-in Pomodoro timer</strong> directly integrated into the interface.
+        </p>
+        <p>
+          Rather than requiring a standalone timer app or browser extension, the timer lives alongside your daily blueprint. You can run standard 25-minute focus intervals followed by structured breaks while looking directly at the tasks assigned to that time block. Combining time blocking and interval pacing in one view keeps your planning and execution in the same context.
+        </p>
+
+        <!-- Interactive Audio Widget Demo -->
+        <div class="audio-test-widget">
+          <div>
+            <div style="font-size:0.85rem; font-weight:700; color:#fff;">Audible Reminder Signals</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Custom sounds signal block transitions and focus intervals</div>
+          </div>
+          <button class="btn btn-outline" style="font-size:0.78rem; padding:5px 12px;" onclick="playSampleChime(this)">
+            ▶ Test Bell Sound
+          </button>
+        </div>
+      </section>
+
+      <!-- Question 9 -->
+      <section class="article-section" id="who-is-it-for">
+        <h2 class="faq-question">
+          <span class="q-num">09.</span>
+          <span>Who Is Remind Me Designed For?</span>
+        </h2>
+        <p>
+          Remind Me is particularly well-suited for:
+        </p>
+        <ul>
+          <li><strong>Students and Researchers:</strong> Anyone balancing class schedules, study blocks, and revision sessions who needs to reuse structured weekly timetables.</li>
+          <li><strong>Remote Workers and Freelancers:</strong> Self-directed professionals who need to create their own daily boundaries and prevent work from bleeding into personal time.</li>
+          <li><strong>People with ADHD or Executive Function Difficulties:</strong> Users who experience friction with conventional planners, get caught in hyperfocus, or need clear, audible cues to manage transitions and counter procrastination.</li>
+          <li><strong>Developers and Keyboard Power Users:</strong> Individuals who value lightweight software with keyboard shortcuts, rapid data entry, and zero cloud bloat.</li>
+          <li><strong>Anyone Seeking an Offline Routine Planner:</strong> People who prefer simple, distraction-free desktop software that respects user privacy and data ownership.</li>
+        </ul>
+      </section>
+
+      <!-- Question 10 -->
+      <section class="article-section" id="why-templates">
+        <h2 class="faq-question">
+          <span class="q-num">10.</span>
+          <span>Why Use Repeatable Schedule Templates?</span>
+        </h2>
+        <p>
+          From a behavioral perspective, routines conserve mental energy. When you have to decide what to do hour by hour, you burn through willpower before completing any meaningful work—a phenomenon psychologists call decision fatigue.
+        </p>
+        <p>
+          Using repeatable schedule templates creates structural scaffolding for your day:
+        </p>
+        <ul>
+          <li><strong>It sets clear intentions:</strong> When a block arrives, the decision of <em>what</em> to work on has already been made.</li>
+          <li><strong>It protects downtime:</strong> By explicitly time-blocking rest, meals, and exercise into your blueprints, personal time is scheduled rather than treated as an afterthought.</li>
+          <li><strong>It simplifies recovery:</strong> If a day is derailed by an unexpected event, you do not have to spend evening hours reorganizing your calendar. The next day, you simply reapply your standard blueprint and reset.</li>
+        </ul>
+      </section>
+
+      <!-- Question 11 -->
+      <section class="article-section" id="different-from-traditional">
+        <h2 class="faq-question">
+          <span class="q-num">11.</span>
+          <span>What Makes Remind Me Different From a Traditional Daily Planner?</span>
+        </h2>
+        <p>
+          Traditional calendars are built primarily to coordinate meetings with other people. Remind Me is built to help individuals structure their own time and follow through on routines they intend to repeat.
+        </p>
+
+        <!-- Detailed Comparison Table -->
+        <div class="table-container">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Aspect</th>
+                <th>Traditional Digital Planners</th>
+                <th>Remind Me: 24h Blueprint</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Connectivity</strong></td>
+                <td>Typically cloud-dependent; requires accounts and syncing</td>
+                <td class="highlight-remindme"><strong>100% offline daily planner</strong>; runs locally on your machine</td>
+              </tr>
+              <tr>
+                <td><strong>Routine Setup</strong></td>
+                <td>Repeating events must be created individually or copied manually</td>
+                <td class="highlight-remindme"><strong>Schedule templates</strong>; stamp full days onto dates in one click</td>
+              </tr>
+              <tr>
+                <td><strong>Data Entry</strong></td>
+                <td>Mouse-heavy; forms, dropdown menus, and date pickers</td>
+                <td class="highlight-remindme"><strong>Keyboard shortcuts</strong> with a 1,000+ word auto-completion dictionary</td>
+              </tr>
+              <tr>
+                <td><strong>Focus Tools</strong></td>
+                <td>Relies on external extensions or third-party timers</td>
+                <td class="highlight-remindme"><strong>Built-in Pomodoro timer</strong> integrated directly with schedule blocks</td>
+              </tr>
+              <tr>
+                <td><strong>Transition Support</strong></td>
+                <td>Often silent banners that are easily dismissed or missed</td>
+                <td class="highlight-remindme"><strong>ADHD-friendly reminders</strong> with custom reminder sounds and alert intervals</td>
+              </tr>
+              <tr>
+                <td><strong>Scope &amp; Bloat</strong></td>
+                <td>Expansive suites with team features, chat, and cloud integrations</td>
+                <td class="highlight-remindme"><strong>Focused single-day routine tool</strong> designed for speed and personal execution</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Question 12 -->
+      <section class="article-section" id="learn-more">
+        <h2 class="faq-question">
+          <span class="q-num">12.</span>
+          <span>Where Can You Learn More About Remind Me?</span>
+        </h2>
+        <p>
+          If you are interested in trying the app or checking its development status, you can visit the official project page:
+        </p>
+        <p>
+          👉 <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/" style="color:#38bdf8; font-weight:700; text-decoration:underline;">Remind Me: 24h Blueprint Official Website</a>
+        </p>
+        <p>
+          From there, you can explore feature updates, learn more about its keyboard-driven workflow, and download the application for your operating system. Whether you are seeking a distraction-free offline daily planner, an easier way to apply repeatable schedules, or an ADHD-friendly schedule planner to reduce routine friction, Remind Me offers a practical, focused alternative to conventional planning software.
+        </p>
+      </section>
+
+      <!-- Final CTA Card -->
+      <div class="final-cta-card">
+        <h2 class="final-cta-title">Build your routine once. Then reuse it.</h2>
+        <p class="final-cta-desc">
+          Ready to experience offline, keyboard-optimized routine planning? Visit the official website or try the instant browser demo.
+        </p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/" class="btn btn-cobalt" style="padding:12px 28px; font-size:0.95rem;">
+            Visit Official Remind Me Site
+          </a>
+          <a href="https://frog1230.itch.io/remind-me-web-demo" class="btn btn-outline" style="padding:12px 24px; font-size:0.95rem;" target="_blank" rel="noopener">
+            Try the Web Demo
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Remind Me: 24h Blueprint</strong> — Developed by <strong>Frog1230</strong>.
+        <div style="margin-top: 4px; font-size: 0.78rem;">
+          An independent, privacy-first tool designed for fast planning and repeatable routines.
+        </div>
+      </div>
+      <div class="footer-nav">
+        <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/">Official Site</a>
+        <a href="https://frog1230.itch.io/remind-me" target="_blank" rel="noopener">itch.io Page</a>
+        <a href="https://frog1230.itch.io/remind-me-web-demo" target="_blank" rel="noopener">Web Demo</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Web Audio Synthesizer for Audio Preview -->
+  <script>
+    let audioCtx = null;
+    function playSampleChime(btn) {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        const now = audioCtx.currentTime;
+        const freqs = [880, 1760, 2640];
+        const gainNode = audioCtx.createGain();
+
+        gainNode.gain.setValueAtTime(0.3, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 1.6);
+        gainNode.connect(audioCtx.destination);
+
+        freqs.forEach(freq => {
+          const osc = audioCtx.createOscillator();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now);
+          osc.connect(gainNode);
+          osc.start(now);
+          osc.stop(now + 1.6);
+        });
+
+        if (btn) {
+          const orig = btn.innerText;
+          btn.innerText = '♪ Playing...';
+          setTimeout(() => { btn.innerText = orig; }, 1600);
+        }
+      } catch (e) {
+        console.warn('Audio playback not supported or allowed yet:', e);
+      }
+    }
+  </script>
+</body>
+</html>
