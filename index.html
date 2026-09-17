@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Remind Me: 24h Blueprint — Fast, Repeatable Routine Planner</title>
-  <meta name="description" content="Build your routine once. Then reuse it. An offline, keyboard-optimized daily planner designed to defeat distraction and routine friction." />
+  <meta name="description" content="Build your routine once. Then reuse it. Run the live interactive Web Remind Me demo directly in your browser. An offline, keyboard-optimized daily routine blueprint." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,33 +12,28 @@
     :root {
       --bg-page: #0c1017;
       --bg-surface: #131924;
+      --bg-surface-elevated: #182232;
       --border-page: #222d3d;
+      --border-subtle: #192231;
       --text-main: #f1f5f9;
       --text-muted: #94a3b8;
       --text-dim: #64748b;
-      
-      /* Exact App Colors Extracted from Screenshots */
+
+      /* Authentic App Colors from Screenshots */
       --app-cobalt: #0022f5;
-      --app-cobalt-deep: #001ad4;
-      --app-bg-editor: #f8f9fc;
-      --app-sidebar-mint: #eef7f0;
-      --app-sidebar-border: #d6e8db;
+      --app-cobalt-hover: #1b3bff;
+      --app-cyan-brand: #06b6d4;
       --app-block-green: #9edaa7;
       --app-block-green-border: #62b370;
       --app-block-orange: #fed699;
       --app-block-orange-border: #f59e0b;
-      --app-block-amber-glow: rgba(251, 191, 36, 0.4);
       --app-chip-bg: #fef3c7;
       --app-chip-border: #fcd34d;
       --app-purple-save: #4a148c;
-      --app-purple-link: #6366f1;
       --app-time-pill-bg: #e0f2fe;
       --app-time-pill-border: #7dd3fc;
       --app-time-pill-text: #0284c7;
-      --app-cyan-brand: #06b6d4;
-      --app-orange-tab: #f97316;
-      --app-green-tab: #22c55e;
-      
+
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
@@ -67,7 +62,7 @@
       text-decoration: none;
     }
 
-    /* Indie Dev Banner */
+    /* Top Dev Status Bar */
     .top-status-bar {
       background: #080d14;
       border-bottom: 1px solid var(--border-page);
@@ -106,18 +101,18 @@
       50% { opacity: 0.4; transform: scale(0.8); }
     }
 
-    /* Navigation */
+    /* Header */
     header.site-header {
       position: sticky;
       top: 0;
       z-index: 99;
-      background: rgba(12, 16, 23, 0.9);
+      background: rgba(12, 16, 23, 0.92);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border-page);
       padding: 12px 24px;
     }
     .nav-inner {
-      max-width: 1280px;
+      max-width: 1240px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -129,8 +124,8 @@
       gap: 10px;
     }
     .bell-icon-cyan {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       color: var(--app-cyan-brand);
       filter: drop-shadow(0 2px 6px rgba(6, 182, 212, 0.4));
     }
@@ -141,7 +136,7 @@
       color: #fff;
     }
     .brand-tag {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-family: var(--font-mono);
       background: rgba(255, 255, 255, 0.08);
       padding: 2px 6px;
@@ -185,15 +180,14 @@
       border: none;
       font-family: var(--font-sans);
     }
-    .btn-download {
+    .btn-cobalt {
       background: var(--app-cobalt);
       color: #ffffff;
       box-shadow: 0 4px 16px rgba(0, 34, 245, 0.35);
     }
-    .btn-download:hover {
-      background: #1a3bff;
+    .btn-cobalt:hover {
+      background: var(--app-cobalt-hover);
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(0, 34, 245, 0.5);
     }
     .btn-outline {
       background: rgba(255, 255, 255, 0.06);
@@ -217,14 +211,14 @@
       padding: 0 24px;
     }
     section {
-      padding: 85px 0;
+      padding: 80px 0;
       border-bottom: 1px solid var(--border-page);
     }
 
     /* Hero */
     .hero-wrap {
       text-align: center;
-      padding: 65px 0 85px;
+      padding: 60px 0 80px;
     }
     .hero-badge {
       display: inline-flex;
@@ -259,7 +253,7 @@
       font-size: 1.12rem;
       color: var(--text-muted);
       max-width: 680px;
-      margin: 0 auto 30px;
+      margin: 0 auto 28px;
       line-height: 1.6;
     }
     .hero-ctas {
@@ -278,7 +272,7 @@
       align-items: center;
       justify-content: center;
       gap: 16px;
-      margin-bottom: 45px;
+      margin-bottom: 40px;
       flex-wrap: wrap;
     }
     .hero-platform-bar span {
@@ -287,8 +281,8 @@
       gap: 6px;
     }
 
-    /* View Switcher Tabs for Interactive Hero Mockup */
-    .mockup-view-toggles {
+    /* Mode Switcher Tabs */
+    .demo-view-toggles {
       display: inline-flex;
       background: #151d2a;
       padding: 4px;
@@ -297,10 +291,10 @@
       margin-bottom: 20px;
       gap: 4px;
     }
-    .mockup-toggle-btn {
-      padding: 8px 16px;
+    .demo-toggle-btn {
+      padding: 8px 18px;
       border-radius: 6px;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 600;
       color: var(--text-muted);
       background: transparent;
@@ -311,13 +305,20 @@
       align-items: center;
       gap: 8px;
     }
-    .mockup-toggle-btn.active {
+    .demo-toggle-btn.active {
       background: var(--app-cobalt);
       color: #fff;
-      box-shadow: 0 2px 8px rgba(0, 34, 245, 0.4);
+      box-shadow: 0 2px 10px rgba(0, 34, 245, 0.45);
+    }
+    .live-pulse-badge {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 6px #4ade80;
     }
 
-    /* REALISTIC REMIND ME APP WINDOW CHROME */
+    /* APP WINDOW CONTAINER */
     .app-window-frame {
       background: #ffffff;
       border-radius: 10px;
@@ -325,7 +326,7 @@
       box-shadow: 
         0 25px 60px -15px rgba(0, 0, 0, 0.85),
         0 0 0 1px rgba(255, 255, 255, 0.15),
-        0 0 50px -10px rgba(0, 34, 245, 0.3);
+        0 0 50px -10px rgba(0, 34, 245, 0.35);
       text-align: left;
       position: relative;
     }
@@ -333,18 +334,18 @@
     /* Windows 11 Titlebar */
     .win-titlebar {
       background: #f1f3f9;
-      height: 34px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 10px 0 12px;
+      padding: 0 10px 0 14px;
       border-bottom: 1px solid #d5dae2;
       user-select: none;
     }
     .win-titlebar-left {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       font-size: 0.78rem;
       font-weight: 600;
       color: #334155;
@@ -354,14 +355,39 @@
       height: 16px;
       color: var(--app-cyan-brand);
     }
+    .win-titlebar-meta {
+      font-size: 0.68rem;
+      font-family: var(--font-mono);
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #475569;
+    }
     .win-titlebar-controls {
       display: flex;
       align-items: center;
-      gap: 0;
+      gap: 4px;
+    }
+    .win-btn-action {
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: transparent;
+      border: none;
+      color: #475569;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .win-btn-action:hover {
+      background: #e2e8f0;
+      color: #0f172a;
     }
     .win-btn {
-      width: 44px;
-      height: 34px;
+      width: 42px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -379,640 +405,133 @@
     }
 
     /* =========================================================
-       VIEW 1: CALENDAR / TEMPLATE MONTH VIEW (Exact from 00:00)
+       LIVE EMBEDDED WEB DEMO (From Web_RemindMe.zip)
        ========================================================= */
-    .app-month-view {
-      display: block;
-      background: #ffffff;
-      color: #0f172a;
+    .live-demo-viewport {
+      position: relative;
+      background: #080d15;
+      width: 100%;
+      height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
-    
-    /* Cobalt Top Bar */
-    .cal-topbar {
+    @media (max-width: 900px) {
+      .live-demo-viewport {
+        height: 480px;
+      }
+    }
+
+    .live-demo-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #000;
+    }
+
+    /* Pre-Launch Splash Overlay (Ensures Web Audio & Canvas focus) */
+    .demo-launch-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(12, 16, 23, 0.94) 0%, rgba(8, 12, 18, 0.98) 100%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      transition: opacity 0.25s ease;
+    }
+    .demo-launch-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .overlay-app-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--app-cyan-brand);
+      margin-bottom: 16px;
+      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.2);
+    }
+    .overlay-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .overlay-sub {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 24px;
+      line-height: 1.55;
+    }
+    .btn-run-live {
       background: var(--app-cobalt);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 13px 32px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 22px rgba(0, 34, 245, 0.45);
+      transition: all 0.2s ease;
+    }
+    .btn-run-live:hover {
+      background: var(--app-cobalt-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 34, 245, 0.6);
+    }
+    .overlay-footnote {
+      margin-top: 18px;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
+    }
+
+    /* Fallback / Path helper banner */
+    .local-zip-helper {
+      background: #0f1624;
+      border-top: 1px solid var(--border-page);
       padding: 8px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      color: #ffffff;
-      font-size: 0.8rem;
-      gap: 12px;
+      font-size: 0.74rem;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
       flex-wrap: wrap;
-    }
-    .cal-topbar-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .cal-pill-selected {
-      background: #ffffff;
-      color: #0f172a;
-      border-radius: 9999px;
-      padding: 4px 14px;
-      font-weight: 600;
-      font-size: 0.78rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-    }
-    .cal-pill-mode {
-      background: #ffffff;
-      color: #0f172a;
-      border-radius: 9999px;
-      padding: 4px 14px;
-      font-weight: 600;
-      font-size: 0.78rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-      cursor: pointer;
-    }
-    .cal-topbar-center {
-      display: flex;
-      align-items: center;
       gap: 8px;
     }
-    .cal-nav-btn {
-      background: #ffffff;
-      color: #0f172a;
-      border: none;
-      padding: 4px 12px;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .cal-month-badge {
-      background: #001799;
-      color: #fff;
-      padding: 4px 14px;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 0.8rem;
-    }
-    .cal-topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .cal-icon-btn {
-      width: 30px;
-      height: 30px;
-      background: #ffffff;
-      color: #334155;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
 
-    /* Main Split Body */
-    .cal-main-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      min-height: 520px;
-    }
-    @media (max-width: 900px) {
-      .cal-main-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Left Sidebar: Templates (Mint green background) */
-    .cal-sidebar {
-      background: var(--app-sidebar-mint);
-      border-right: 1px solid var(--app-sidebar-border);
-      padding: 16px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .create-template-btn {
-      background: #ffffff;
-      border: 1px solid #bbf7d0;
-      color: #166534;
-      font-weight: 600;
-      font-size: 0.82rem;
-      padding: 7px;
-      border-radius: 9999px;
-      text-align: center;
-      cursor: pointer;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-      margin-bottom: 4px;
-    }
-    .create-template-btn:hover {
-      background: #f0fdf4;
-    }
-
-    /* Template Cards in Sidebar */
-    .sidebar-template-card {
-      background: #ffffff;
-      border: 1px solid #dcfce7;
-      border-radius: 8px;
-      padding: 10px 12px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-    .sidebar-t-info {
-      flex: 1;
-      min-width: 0;
-    }
-    .sidebar-t-title {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: #0f172a;
-      line-height: 1.25;
-      margin-bottom: 3px;
-      word-break: break-word;
-    }
-    .sidebar-t-sub {
-      font-size: 0.7rem;
-      color: #64748b;
-      font-family: var(--font-mono);
-    }
-    .sidebar-t-actions {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      flex-shrink: 0;
-    }
-    .t-icon-circle {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 11px;
-    }
-    .t-icon-pencil { background: #ede9fe; color: #7c3aed; }
-    .t-icon-check { background: #dcfce7; color: #16a34a; }
-    .t-icon-bars { background: #fef3c7; color: #d97706; }
-    .t-icon-trash { background: #fee2e2; color: #dc2626; }
-
-    /* Right: Month Calendar Grid */
-    .cal-grid-wrap {
-      display: flex;
-      flex-direction: column;
-      background: #ffffff;
-    }
-    .cal-days-header {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      background: #ffffff;
-      border-bottom: 1px solid #e2e8f0;
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.78rem;
-      color: #475569;
-      padding: 6px 0;
-    }
-    .cal-days-body {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      grid-auto-rows: minmax(105px, auto);
-      border-bottom: 1px solid #e2e8f0;
-    }
-    .cal-cell {
-      border-right: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
-      padding: 6px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      background: #ffffff;
-      min-height: 105px;
-    }
-    .cal-cell:nth-child(7n) {
-      border-right: none;
-    }
-    .cal-cell-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.78rem;
-    }
-    .cal-cell-num {
-      font-weight: 700;
-      color: #1e293b;
-    }
-    .cal-cell-action {
-      font-size: 0.72rem;
-      color: var(--app-purple-link);
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .cal-cell-action:hover {
-      text-decoration: underline;
-    }
-
-    /* Template applied inside cell */
-    .cal-cell-applied-title {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #0022f5;
-      text-align: center;
-      line-height: 1.2;
-      margin: 2px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 3px;
-    }
-    .cal-cell-applied-title span.close {
-      color: #64748b;
-      cursor: pointer;
-      font-size: 9px;
-    }
-
-    /* Tiny amber chips in day cells */
-    .cal-schedule-chip {
-      background: var(--app-chip-bg);
-      border: 1px solid var(--app-chip-border);
-      border-radius: 4px;
-      padding: 2px 4px;
-      font-size: 0.65rem;
-      font-family: var(--font-mono);
-      color: #78350f;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      line-height: 1.2;
-      margin-bottom: 2px;
-    }
-
-    /* =========================================================
-       VIEW 2: TEMPLATE EDITOR (Exact from 00:01 - 00:33, 00:36)
-       ========================================================= */
-    .app-editor-view {
+    /* Static Month & Template Tours (From previous turns) */
+    .tour-view-container {
       display: none;
-      background: var(--app-bg-editor);
-      color: #0f172a;
     }
-    
-    /* Top Bar of Template Editor */
-    .editor-topbar {
-      background: #f8fafc;
-      border-bottom: 1px solid #e2e8f0;
-      padding: 10px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .editor-heading-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .editor-back-btn {
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: #334155;
-      display: flex;
-      align-items: center;
-    }
-    .editor-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #0f172a;
-    }
-    .editor-top-controls {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .tour-view-container.active {
+      display: block;
     }
 
-    /* ADHD Mode Pill Widget */
-    .adhd-mode-pill {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 1.5px solid #0284c7;
-      background: #ffffff;
-      border-radius: 9999px;
-      padding: 4px 12px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #0284c7;
-    }
-    .adhd-switch {
-      position: relative;
-      width: 32px;
-      height: 18px;
-      background: #f97316;
-      border-radius: 9999px;
-      cursor: pointer;
-    }
-    .adhd-switch-knob {
-      position: absolute;
-      top: 2px;
-      right: 2px;
-      width: 14px;
-      height: 14px;
-      background: #ffffff;
-      border-radius: 50%;
-      transition: all 0.15s;
-    }
-    .adhd-dropdown {
-      font-size: 0.75rem;
-      color: #0284c7;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 3px;
-    }
-
-    /* Save Button (Deep purple from screenshots) */
-    .btn-save-purple {
-      background: var(--app-purple-save);
-      color: #ffffff;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 6px 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-    }
-    .btn-save-purple:hover {
-      background: #3b0764;
-    }
-
-    /* Editor Form Header (Name, Description, Blocks/Tasks Toggle) */
-    .editor-form-header {
-      padding: 14px 20px;
-      background: #ffffff;
-      border-bottom: 1px solid #e2e8f0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .editor-inputs-col {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 780px;
-    }
-    /* Material-like border-notch input */
-    .outlined-input-wrap {
-      position: relative;
-    }
-    .outlined-input-label {
-      position: absolute;
-      top: -8px;
-      left: 10px;
-      background: #ffffff;
-      padding: 0 4px;
-      font-size: 0.68rem;
-      font-weight: 600;
-      color: #64748b;
-      font-family: var(--font-sans);
-    }
-    .outlined-input {
-      width: 100%;
-      border: 1.5px solid #cbd5e1;
-      border-radius: 6px;
-      padding: 7px 12px;
-      font-size: 0.88rem;
-      color: #0f172a;
-      outline: none;
-      background: transparent;
-      font-family: var(--font-sans);
-      font-weight: 500;
-    }
-    .outlined-input:focus {
-      border-color: #0284c7;
-    }
-    
-    .editor-actions-col {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 10px;
-    }
-    .blocks-tasks-segmented {
-      display: flex;
-      border: 1.5px solid #cbd5e1;
-      border-radius: 6px;
-      overflow: hidden;
-      background: #ffffff;
-    }
-    .seg-btn {
-      padding: 6px 14px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      color: #475569;
-    }
-    .seg-btn.active-orange {
-      background: var(--app-orange-tab);
-      color: #ffffff;
-    }
-    .seg-btn.active-green {
-      background: var(--app-green-tab);
-      color: #ffffff;
-    }
-    .clear-all-link {
-      color: #dc2626;
-      font-size: 0.75rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
-    }
-
-    /* Timeline Canvas (24h time-ruler with actual green & orange blocks) */
-    .editor-timeline-canvas {
-      position: relative;
-      background: #ffffff;
-      min-height: 480px;
-      padding: 20px 20px 40px 60px;
-      overflow-y: auto;
-    }
-    .timeline-ruler-mark {
-      position: absolute;
-      left: 12px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #64748b;
-      font-family: var(--font-mono);
-      transform: translateY(-50%);
-    }
-    .timeline-ruler-sub {
-      position: absolute;
-      left: 24px;
-      font-size: 0.65rem;
-      color: #94a3b8;
-      font-family: var(--font-mono);
-      transform: translateY(-50%);
-    }
-    .timeline-gridline {
-      position: absolute;
-      left: 60px;
-      right: 0;
-      height: 1px;
-      background: #f1f5f9;
-    }
-    .timeline-gridline.hour {
-      background: #e2e8f0;
-    }
-
-    .timeline-plus-btn {
-      position: absolute;
-      left: 70px;
-      width: 18px;
-      height: 18px;
-      background: #22c55e;
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-      z-index: 5;
-    }
-
-    /* REALISTIC TIME BLOCKS (GREEN & ORANGE) */
-    .canvas-block {
-      position: relative;
-      border-radius: 8px;
-      padding: 12px 16px;
-      margin-bottom: 14px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-      z-index: 4;
-      transition: box-shadow 0.15s ease;
-    }
-    
-    /* Green Block (Primary) */
-    .canvas-block.block-green {
-      background: var(--app-block-green);
-      border: 1.5px solid var(--app-block-green-border);
-    }
-    
-    /* Orange / Yellow Block (Secondary/Overlapping/Selected) */
-    .canvas-block.block-orange {
-      background: var(--app-block-orange);
-      border: 1.5px solid var(--app-block-orange-border);
-      box-shadow: 0 0 15px var(--app-block-amber-glow);
-    }
-
-    .canvas-block-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    
-    /* Time Pill Badges [ 08 ] : [ 00 ] - [ 09 ] : [ 00 ] */
-    .time-badge-group {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-    }
-    .time-pill-num {
-      background: var(--app-time-pill-bg);
-      border: 1px solid var(--app-time-pill-border);
-      color: var(--app-time-pill-text);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-      min-width: 24px;
-      text-align: center;
-    }
-    .time-badge-sep {
-      color: #64748b;
-      font-weight: 700;
-      font-size: 0.72rem;
-      margin: 0 2px;
-    }
-    .block-delete-icon {
-      color: #dc2626;
-      cursor: pointer;
-      font-size: 13px;
-    }
-
-    .block-title-text {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: #0f172a;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* REAL AUTOCOMPLETE DROPDOWN (Matches 00:03, 00:04, 00:12, 00:20, 00:24) */
-    .autocomplete-popover {
-      position: absolute;
-      left: 16px;
-      top: 65px;
-      background: #ffffff;
-      border: 1.5px solid #cbd5e1;
-      border-radius: 6px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      z-index: 20;
-      min-width: 170px;
-      overflow: hidden;
-    }
-    .autocomplete-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 6px 10px;
-      font-size: 0.78rem;
-      color: #1e293b;
-      border-bottom: 1px solid #f1f5f9;
-      cursor: pointer;
-    }
-    .autocomplete-row:last-child {
-      border-bottom: none;
-    }
-    .autocomplete-row:hover {
-      background: #f8fafc;
-    }
-    .kbd-tag-pill {
-      background: #e0f2fe;
-      border: 1px solid #7dd3fc;
-      color: #0284c7;
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 1px 6px;
-      border-radius: 4px;
-    }
-
-    /* Section Headings */
+    /* Section Headers */
     .section-header {
       text-align: center;
       max-width: 720px;
-      margin: 0 auto 50px;
+      margin: 0 auto 45px;
     }
     .section-eyebrow {
       font-family: var(--font-mono);
@@ -1024,11 +543,11 @@
       display: block;
     }
     .section-heading {
-      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
       font-weight: 800;
       letter-spacing: -0.025em;
       color: #fff;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       line-height: 1.25;
     }
     .section-summary {
@@ -1037,167 +556,49 @@
       line-height: 1.6;
     }
 
-    /* Feature Grid Showcase */
-    .two-col-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-    @media (max-width: 860px) {
-      .two-col-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-    }
-
-    .feature-text-block {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .feature-tag-chip {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      padding: 3px 8px;
-      border-radius: 4px;
-      width: fit-content;
-    }
-    .feature-title-lg {
-      font-size: 1.75rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #fff;
-      line-height: 1.3;
-    }
-    .feature-desc {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.65;
-    }
-    .feature-checks {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 6px;
-    }
-    .feature-checks li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 0.9rem;
-      color: var(--text-main);
-    }
-    .feature-checks li svg {
-      flex-shrink: 0;
-      color: #38bdf8;
-      margin-top: 2px;
-    }
-
-    /* Interactive Autocomplete Simulator Card */
-    .interactive-card {
-      background: #101622;
-      border: 1px solid var(--border-page);
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    }
-    .simulator-top-label {
-      font-size: 0.75rem;
-      font-family: var(--font-mono);
-      color: var(--text-dim);
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .mock-editor-segment {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 16px;
-      color: #0f172a;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      position: relative;
-    }
-    .sim-chips-bar {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-    .sim-word-btn {
-      background: #192333;
-      border: 1px solid #283950;
-      color: var(--text-muted);
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .sim-word-btn:hover {
-      background: #24354c;
-      color: #fff;
-      border-color: #3d5577;
-    }
-
-    /* ADHD Mode Feature Component */
-    .adhd-feature-box {
-      background: #ffffff;
-      border-radius: 12px;
-      border: 1px solid #cbd5e1;
-      padding: 24px;
-      color: #0f172a;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    }
-
-    /* Offline Grid */
-    .offline-grid {
+    /* Features Grid */
+    .feature-grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 22px;
     }
-    @media (max-width: 800px) {
-      .offline-grid {
+    @media (max-width: 860px) {
+      .feature-grid-3 {
         grid-template-columns: 1fr;
       }
     }
-    .offline-card {
+    .feature-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-page);
       border-radius: 10px;
-      padding: 28px 22px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
-    .offline-icon-box {
+    .f-icon-box {
       width: 40px;
       height: 40px;
       border-radius: 8px;
-      background: rgba(0, 34, 245, 0.12);
-      border: 1px solid rgba(0, 34, 245, 0.25);
+      background: rgba(0, 34, 245, 0.15);
+      border: 1px solid rgba(0, 34, 245, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #38bdf8;
     }
-    .offline-title {
-      font-size: 1.05rem;
+    .f-title {
+      font-size: 1.1rem;
       font-weight: 700;
       color: #fff;
     }
-    .offline-desc {
+    .f-desc {
       font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
-    /* Platform Downloads Grid */
+    /* Downloads Grid */
     .download-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1301,17 +702,16 @@
 </head>
 <body>
 
-  <!-- Indie Dev Banner -->
+  <!-- Dev Status Bar -->
   <div class="top-status-bar">
-    <span class="status-badge"><span class="status-dot"></span> Active Indie Project</span>
-    <span>Official Reference: <strong>Remind Me</strong> by Janis Flury (Frog1230) on itch.io</span>
+    <span class="status-badge"><span class="status-dot"></span> Web Build Ready</span>
+    <span>Powered by <strong>Web_RemindMe.zip</strong> — 100% Client-Side WebGL</span>
   </div>
 
   <!-- Header -->
   <header class="site-header">
     <div class="nav-inner">
-      <a href="https://frog1230.itch.io/remind-me" class="brand-mark" target="_blank" rel="noopener">
-        <!-- Exact Remind Me Bell Icon Shape -->
+      <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/" class="brand-mark">
         <svg class="bell-icon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
           <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
@@ -1321,18 +721,17 @@
       </a>
 
       <nav class="nav-links">
-        <a href="#templates" class="nav-link">Month View</a>
-        <a href="#editor" class="nav-link">Template Editor</a>
-        <a href="#speed" class="nav-link">Word Completer</a>
-        <a href="#adhd" class="nav-link">ADHD Mode</a>
-        <a href="#offline" class="nav-link">100% Offline</a>
+        <a href="#demo" class="nav-link" style="color:#38bdf8; font-weight:600;">Live Web Demo</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#download" class="nav-link">Downloads</a>
+        <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/what-is-remind-me.html" class="nav-link">What Is Remind Me?</a>
       </nav>
 
       <div class="nav-cta-group">
         <a href="https://frog1230.itch.io/remind-me-web-demo" class="btn btn-outline btn-sm" target="_blank" rel="noopener">
-          Try Web Demo
+          itch.io Web Demo
         </a>
-        <a href="https://frog1230.itch.io/remind-me" class="btn btn-download btn-sm" target="_blank" rel="noopener">
+        <a href="https://frog1230.itch.io/remind-me" class="btn btn-cobalt btn-sm" target="_blank" rel="noopener">
           Get Remind Me
         </a>
       </div>
@@ -1354,19 +753,19 @@
       </p>
 
       <div class="hero-ctas">
-        <a href="https://frog1230.itch.io/remind-me" class="btn btn-download" style="padding: 12px 28px; font-size: 1rem;" target="_blank" rel="noopener">
+        <a href="#demo" class="btn btn-cobalt" style="padding: 12px 28px; font-size: 1rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          Play Live Web Demo
+        </a>
+        <a href="https://frog1230.itch.io/remind-me" class="btn btn-outline" style="padding: 12px 24px; font-size: 1rem;" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          Get Remind Me
-        </a>
-        <a href="https://frog1230.itch.io/remind-me-web-demo" class="btn btn-outline" style="padding: 12px 24px; font-size: 1rem;" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="5 3 19 12 5 21 5 3"/>
-          </svg>
-          Try the Web Demo
+          Download Desktop App
         </a>
       </div>
 
@@ -1374,438 +773,123 @@
         <span>Windows (11 MB)</span> • 
         <span>macOS (53 MB)</span> • 
         <span>Android (48 MB)</span> • 
-        <span>Browser Web Demo</span> • 
+        <span>HTML5 Web Build</span> • 
         <span style="color:#38bdf8;">Runs 100% Offline</span>
       </div>
 
-      <!-- View Selector to match both views from user's screenshots -->
-      <div class="mockup-view-toggles">
-        <button class="mockup-toggle-btn active" id="btn-show-cal" onclick="switchMockupView('cal')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          1. Month View & Apply Template
+      <!-- View Switcher -->
+      <div class="demo-view-toggles">
+        <button class="demo-toggle-btn active" id="btn-tab-live" onclick="setAppMode('live')">
+          <span class="live-pulse-badge"></span>
+          Live Interactive Demo (Web_RemindMe)
         </button>
-        <button class="mockup-toggle-btn" id="btn-show-editor" onclick="switchMockupView('editor')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          2. Template Editor & Blocks
+        <button class="demo-toggle-btn" id="btn-tab-tour" onclick="setAppMode('tour')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Screenshot UI Tour
         </button>
       </div>
 
-      <!-- VISUAL CENTERPIECE: EXACT RECREATION OF APP SCREENSHOTS -->
-      <div class="app-window-frame" id="app-mockup-window">
-        <!-- Windows 11 Chrome Bar -->
+      <!-- APP WINDOW CONTAINER (CENTERPIECE) -->
+      <div class="app-window-frame" id="demo">
+        <!-- Windows 11 Chrome Titlebar -->
         <div class="win-titlebar">
           <div class="win-titlebar-left">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
               <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
             </svg>
-            <span>Remind Me</span>
+            <span>Remind Me: 24h Blueprint</span>
+            <span class="win-titlebar-meta" id="status-title-meta">Web_RemindMe Build</span>
           </div>
+
           <div class="win-titlebar-controls">
+            <button class="win-btn-action" onclick="reloadWebDemo()" title="Reload the WebGL Demo">
+              ↻ Restart
+            </button>
+            <button class="win-btn-action" onclick="toggleFullscreenDemo()" title="Fullscreen">
+              ⛶ Fullscreen
+            </button>
             <div class="win-btn">—</div>
-            <div class="win-btn">▢</div>
+            <div class="win-btn" onclick="toggleFullscreenDemo()">▢</div>
             <div class="win-btn win-btn-close">✕</div>
           </div>
         </div>
 
-        <!-- ==========================================
-             VIEW 1: CALENDAR VIEW (From Screenshot 00:00 & 00:34)
-             ========================================== -->
-        <div class="app-month-view" id="hero-cal-view">
-          <!-- Cobalt Blue Header Bar -->
-          <div class="cal-topbar">
-            <div class="cal-topbar-left">
-              <span>Selected:</span>
-              <div class="cal-pill-selected">
-                <span>Template, Break, Fitness, and Haircut</span>
+        <!-- 1. LIVE WEB BUILD CONTAINER (Integrated from Web_RemindMe.zip) -->
+        <div id="live-demo-panel">
+          <div class="live-demo-viewport" id="viewport-box">
+            <!-- Splash / Click-to-Run Overlay to guarantee AudioContext activation -->
+            <div class="demo-launch-overlay" id="launch-overlay">
+              <div class="overlay-app-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
               </div>
-              <div class="cal-pill-mode" onclick="switchMockupView('editor')">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                <span>Mode: Apply Template</span>
-              </div>
-            </div>
-
-            <div class="cal-topbar-center">
-              <button class="cal-nav-btn">‹ Prev</button>
-              <span class="cal-month-badge">June 2026</span>
-              <button class="cal-nav-btn">Next ›</button>
-            </div>
-
-            <div class="cal-topbar-right">
-              <div class="cal-icon-btn" title="Keyboard Shortcuts">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.001M10 8h.001M14 8h.001M18 8h.001M8 12h.001M12 12h.001M16 12h.001M7 16h10"/></svg>
-              </div>
-              <div class="cal-icon-btn" title="Settings">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Main Layout: Mint Sidebar + 7-Day Month Grid -->
-          <div class="cal-main-layout">
-            <!-- Sidebar: Saved Templates -->
-            <div class="cal-sidebar">
-              <div class="create-template-btn" onclick="switchMockupView('editor')">Create Template</div>
-
-              <!-- Template 1 -->
-              <div class="sidebar-template-card">
-                <div class="sidebar-t-info">
-                  <div class="sidebar-t-title">Template Test</div>
-                  <div class="sidebar-t-sub">62 blocks</div>
-                </div>
-                <div class="sidebar-t-actions">
-                  <div class="t-icon-circle t-icon-pencil" title="Edit" onclick="switchMockupView('editor')">✏</div>
-                  <div class="t-icon-circle t-icon-check" title="Apply">✓</div>
-                  <div class="t-icon-circle t-icon-bars" title="Reorder">≡</div>
-                  <div class="t-icon-circle t-icon-trash" title="Delete">🗑</div>
-                </div>
-              </div>
-
-              <!-- Template 2 -->
-              <div class="sidebar-template-card" style="border-color: #86efac;">
-                <div class="sidebar-t-info">
-                  <div class="sidebar-t-title">Template, Break, Fitness, and Haircut</div>
-                  <div class="sidebar-t-sub">16 blocks</div>
-                </div>
-                <div class="sidebar-t-actions">
-                  <div class="t-icon-circle t-icon-pencil" title="Edit" onclick="switchMockupView('editor')">✏</div>
-                  <div class="t-icon-circle t-icon-check" style="background:#22c55e; color:#fff;" title="Active">✓</div>
-                  <div class="t-icon-circle t-icon-bars" title="Reorder">≡</div>
-                  <div class="t-icon-circle t-icon-trash" title="Delete">🗑</div>
-                </div>
-              </div>
-
-              <!-- Template 3 -->
-              <div class="sidebar-template-card">
-                <div class="sidebar-t-info">
-                  <div class="sidebar-t-title">Collaboration, Deep Work, Development, and Fitness</div>
-                  <div class="sidebar-t-sub">6 blocks</div>
-                </div>
-                <div class="sidebar-t-actions">
-                  <div class="t-icon-circle t-icon-pencil" title="Edit" onclick="switchMockupView('editor')">✏</div>
-                  <div class="t-icon-circle t-icon-check" title="Apply">✓</div>
-                  <div class="t-icon-circle t-icon-bars" title="Reorder">≡</div>
-                  <div class="t-icon-circle t-icon-trash" title="Delete">🗑</div>
-                </div>
-              </div>
-
-              <!-- Template 4 -->
-              <div class="sidebar-template-card">
-                <div class="sidebar-t-info">
-                  <div class="sidebar-t-title">Break, Coding, and Fitness</div>
-                  <div class="sidebar-t-sub">3 blocks</div>
-                </div>
-                <div class="sidebar-t-actions">
-                  <div class="t-icon-circle t-icon-pencil" title="Edit" onclick="switchMockupView('editor')">✏</div>
-                  <div class="t-icon-circle t-icon-check" title="Apply">✓</div>
-                  <div class="t-icon-circle t-icon-bars" title="Reorder">≡</div>
-                  <div class="t-icon-circle t-icon-trash" title="Delete">🗑</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Calendar Month Grid (Days 1 to 21 June 2026) -->
-            <div class="cal-grid-wrap">
-              <div class="cal-days-header">
-                <div>Sun</div>
-                <div>Mon</div>
-                <div>Tue</div>
-                <div>Wed</div>
-                <div>Thu</div>
-                <div>Fri</div>
-                <div>Sat</div>
-              </div>
-              <div class="cal-days-body">
-                <!-- Day 1 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header">
-                    <span class="cal-cell-num">1</span>
-                    <span class="cal-cell-action">Edit Day</span>
-                  </div>
-                </div>
-                <!-- Day 2 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">2</span><span class="cal-cell-action">Edit Day</span></div>
-                </div>
-                <!-- Day 3 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">3</span><span class="cal-cell-action">Edit Day</span></div>
-                </div>
-                <!-- Day 4 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">4</span><span class="cal-cell-action">Edit Day</span></div>
-                </div>
-                <!-- Day 5 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">5</span><span class="cal-cell-action">Edit Day</span></div>
-                </div>
-                <!-- Day 6 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">6</span><span class="cal-cell-action">Edit Day</span></div>
-                </div>
-                <!-- Day 7 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">7</span><span class="cal-cell-action">Apply</span></div>
-                </div>
-
-                <!-- Day 8: Template Test Applied (From 00:00 & 00:35) -->
-                <div class="cal-cell" style="background:#fffef5;">
-                  <div class="cal-cell-header">
-                    <span class="cal-cell-num">8</span>
-                    <span class="cal-cell-action">Edit Day</span>
-                  </div>
-                  <div class="cal-cell-applied-title">
-                    <span>Template Test</span>
-                    <span class="close">✕</span>
-                  </div>
-                  <div class="cal-schedule-chip">12:00 AM-12:15 AM</div>
-                  <div class="cal-schedule-chip">12:15 AM-12:30 AM</div>
-                  <div class="cal-schedule-chip">12:30 AM-12:45 AM</div>
-                </div>
-
-                <!-- Day 9 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">9</span><span class="cal-cell-action">Apply</span></div>
-                </div>
-
-                <!-- Day 10: Template, Break, Fitness Applied -->
-                <div class="cal-cell" style="background:#fffef5;">
-                  <div class="cal-cell-header">
-                    <span class="cal-cell-num">10</span>
-                    <span class="cal-cell-action">Edit Day</span>
-                  </div>
-                  <div class="cal-cell-applied-title">
-                    <span>Break & Fitness</span>
-                    <span class="close">✕</span>
-                  </div>
-                  <div class="cal-schedule-chip">9:15 AM-9:45 AM</div>
-                  <div class="cal-schedule-chip">9:45 AM-10:00 AM</div>
-                  <div class="cal-schedule-chip">10:00 AM-10:30 AM</div>
-                </div>
-
-                <!-- Day 11 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">11</span><span class="cal-cell-action">Apply</span></div>
-                </div>
-                <!-- Day 12 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">12</span><span class="cal-cell-action">Apply</span></div>
-                </div>
-
-                <!-- Day 13: Template Applied -->
-                <div class="cal-cell" style="background:#fffef5;">
-                  <div class="cal-cell-header">
-                    <span class="cal-cell-num">13</span>
-                    <span class="cal-cell-action">Edit Day</span>
-                  </div>
-                  <div class="cal-cell-applied-title">
-                    <span>Break & Fitness</span>
-                    <span class="close">✕</span>
-                  </div>
-                  <div class="cal-schedule-chip">9:15 AM-9:45 AM</div>
-                  <div class="cal-schedule-chip">9:45 AM-10:00 AM</div>
-                </div>
-
-                <!-- Day 14 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">14</span><span class="cal-cell-action">Apply</span></div>
-                </div>
-
-                <!-- Day 15: Break, Coding, and Fitness -->
-                <div class="cal-cell" style="background:#fffef5;">
-                  <div class="cal-cell-header">
-                    <span class="cal-cell-num">15</span>
-                    <span class="cal-cell-action">Edit Day</span>
-                  </div>
-                  <div class="cal-cell-applied-title">
-                    <span>Break, Coding, Fitness</span>
-                    <span class="close">✕</span>
-                  </div>
-                  <div class="cal-schedule-chip">8:00 AM-9:20 AM Coding</div>
-                  <div class="cal-schedule-chip">9:20 AM-10:00 AM Break</div>
-                  <div class="cal-schedule-chip">10:00 AM-11:00 AM Coding</div>
-                </div>
-
-                <!-- Day 16: Break, Coding, and Fitness -->
-                <div class="cal-cell" style="background:#fffef5;">
-                  <div class="cal-cell-header">
-                    <span class="cal-cell-num">16</span>
-                    <span class="cal-cell-action">Edit Day</span>
-                  </div>
-                  <div class="cal-cell-applied-title">
-                    <span>Break, Coding, Fitness</span>
-                    <span class="close">✕</span>
-                  </div>
-                  <div class="cal-schedule-chip">8:00 AM-9:20 AM Coding</div>
-                  <div class="cal-schedule-chip">9:20 AM-10:00 AM Break</div>
-                  <div class="cal-schedule-chip">10:00 AM-11:00 AM Coding</div>
-                </div>
-
-                <!-- Day 17: Break, Coding, and Fitness -->
-                <div class="cal-cell" style="background:#fffef5;">
-                  <div class="cal-cell-header">
-                    <span class="cal-cell-num">17</span>
-                    <span class="cal-cell-action">Edit Day</span>
-                  </div>
-                  <div class="cal-cell-applied-title">
-                    <span>Break, Coding, Fitness</span>
-                    <span class="close">✕</span>
-                  </div>
-                  <div class="cal-schedule-chip">8:00 AM-9:20 AM Coding</div>
-                  <div class="cal-schedule-chip">9:20 AM-10:00 AM Break</div>
-                  <div class="cal-schedule-chip">10:00 AM-11:00 AM Coding</div>
-                </div>
-
-                <!-- Day 18 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">18</span><span class="cal-cell-action">Apply</span></div>
-                </div>
-                <!-- Day 19 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">19</span><span class="cal-cell-action">Apply</span></div>
-                </div>
-                <!-- Day 20 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">20</span><span class="cal-cell-action">Apply</span></div>
-                </div>
-                <!-- Day 21 -->
-                <div class="cal-cell">
-                  <div class="cal-cell-header"><span class="cal-cell-num">21</span><span class="cal-cell-action">Apply</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ==========================================
-             VIEW 2: TEMPLATE EDITOR (Exact from 00:01 - 00:33)
-             ========================================== -->
-        <div class="app-editor-view" id="hero-editor-view">
-          <!-- Editor Top Bar -->
-          <div class="editor-topbar">
-            <div class="editor-heading-wrap">
-              <div class="editor-back-btn" onclick="switchMockupView('cal')" title="Back to Month View">←</div>
-              <div class="editor-title">Template Editor</div>
-            </div>
-
-            <div class="editor-top-controls">
-              <!-- ADHD Mode Pill Widget with Dropdown -->
-              <div class="adhd-mode-pill">
-                <span>ADHD Mode</span>
-                <div class="adhd-switch" onclick="toggleADHDSwitch(this)">
-                  <div class="adhd-switch-knob"></div>
-                </div>
-                <div class="adhd-dropdown" onclick="cycleADHDTime(this)">
-                  <span id="adhd-time-label">10 min</span>
-                  <span>▼</span>
-                </div>
-              </div>
-
-              <!-- Keyboard icon button -->
-              <div class="cal-icon-btn" title="Keyboard Shortcuts" style="border: 1px solid #cbd5e1;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.001M10 8h.001M14 8h.001M18 8h.001M8 12h.001M12 12h.001M16 12h.001M7 16h10"/></svg>
-              </div>
-
-              <!-- Save button (Deep purple with floppy disk) -->
-              <button class="btn-save-purple" onclick="alert('Template saved locally to disk!')">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-                <span>Save</span>
+              <h2 class="overlay-title">Launch Remind Me Web Demo</h2>
+              <p class="overlay-sub">
+                Run the actual client-side web export directly in your browser. Complete with keyboard word-completion, ADHD interval alerts, and repeatable schedule templates.
+              </p>
+              <button class="btn-run-live" onclick="startLiveDemo()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="6 4 20 12 6 20 6 4"/>
+                </svg>
+                Click to Start Web Demo
               </button>
+              <div class="overlay-footnote">
+                Runs 100% locally via WebGL &amp; WebAudio • Zero telemetry
+              </div>
             </div>
+
+            <!-- The Real WebGL / HTML5 Iframe -->
+            <iframe 
+              id="web-remindme-iframe"
+              class="live-demo-iframe" 
+              src="about:blank"
+              allow="autoplay; fullscreen; clipboard-read; clipboard-write; focus-without-user-activation"
+              title="Remind Me Interactive Web Demo">
+            </iframe>
           </div>
 
-          <!-- Outlined Inputs: Template Name, Description & Blocks/Tasks Toggle -->
-          <div class="editor-form-header">
-            <div class="editor-inputs-col">
-              <div class="outlined-input-wrap">
-                <span class="outlined-input-label">Template Name</span>
-                <input type="text" class="outlined-input" value="Coding" id="editor-name-input" />
-              </div>
-              <div class="outlined-input-wrap">
-                <span class="outlined-input-label">Description</span>
-                <input type="text" class="outlined-input" value="Coding" placeholder="Day Title (optional)" />
-              </div>
+          <!-- Configuration & Path Switcher for Web_RemindMe.zip -->
+          <div class="local-zip-helper">
+            <div>
+              <strong>📁 Archive Source:</strong> Loading from <code>./Web_RemindMe/index.html</code> (extracted from <code>Web_RemindMe.zip</code>)
             </div>
-
-            <div class="editor-actions-col">
-              <div class="blocks-tasks-segmented">
-                <button class="seg-btn" id="seg-blocks-btn" onclick="toggleSegmentTab('blocks')">Blocks</button>
-                <button class="seg-btn active-orange" id="seg-tasks-btn" onclick="toggleSegmentTab('tasks')">Tasks</button>
-              </div>
-              <div class="clear-all-link">
-                <span>🗑</span> Clear All
-              </div>
+            <div style="display:flex; gap:10px;">
+              <a href="https://frog1230.itch.io/remind-me-web-demo" target="_blank" rel="noopener" style="color:#38bdf8; text-decoration:underline;">
+                Open in new tab (itch.io)
+              </a>
             </div>
           </div>
+        </div>
 
-          <!-- Timeline Grid Ruler & Time Blocks -->
-          <div class="editor-timeline-canvas">
-            <!-- Time Ruler Indicators -->
-            <div class="timeline-ruler-mark" style="top: 25px;">08:00</div>
-            <div class="timeline-gridline hour" style="top: 25px;"></div>
-            <div class="timeline-ruler-sub" style="top: 65px;">:30</div>
-            <div class="timeline-gridline" style="top: 65px;"></div>
+        <!-- 2. SCREENSHOT TOUR (Fallback/Walkthrough) -->
+        <div id="tour-demo-panel" class="tour-view-container" style="background:#fff; color:#0f172a; padding: 24px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:1px solid #e2e8f0; padding-bottom:12px;">
+            <div>
+              <h3 style="font-size:1.15rem; font-weight:700;">Remind Me Visual Reference Tour</h3>
+              <p style="font-size:0.82rem; color:#64748b;">Authentic interface snapshots extracted directly from creator Janis Flury (Frog1230)</p>
+            </div>
+            <button class="btn btn-cobalt btn-sm" onclick="setAppMode('live')">Return to Live Demo</button>
+          </div>
 
-            <div class="timeline-ruler-mark" style="top: 135px;">09:00</div>
-            <div class="timeline-gridline hour" style="top: 135px;"></div>
-            <div class="timeline-ruler-sub" style="top: 175px;">:30</div>
-            <div class="timeline-gridline" style="top: 175px;"></div>
-
-            <div class="timeline-ruler-mark" style="top: 245px;">10:00</div>
-            <div class="timeline-gridline hour" style="top: 245px;"></div>
-            <div class="timeline-ruler-sub" style="top: 285px;">:30</div>
-            <div class="timeline-gridline" style="top: 285px;"></div>
-
-            <div class="timeline-ruler-mark" style="top: 355px;">11:00</div>
-            <div class="timeline-gridline hour" style="top: 355px;"></div>
-
-            <!-- Green (+) add button on ruler -->
-            <div class="timeline-plus-btn" style="top: 5px;">+</div>
-
-            <!-- Block 1: Pastel Green (Morning Prep - from screenshot 00:05) -->
-            <div class="canvas-block block-green" style="margin-top: 15px;">
-              <div class="canvas-block-header">
-                <div class="time-badge-group">
-                  <span class="time-pill-num">08</span>
-                  <span class="time-pill-num">00</span>
-                  <span class="time-badge-sep">-</span>
-                  <span class="time-pill-num">09</span>
-                  <span class="time-pill-num">00</span>
-                </div>
-                <div class="block-delete-icon">🗑</div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+            <div style="border:1px solid #cbd5e1; border-radius:8px; padding:16px; background:#f8fafc;">
+              <h4 style="font-size:0.9rem; color:#0022f5; margin-bottom:8px;">Month Calendar &amp; Apply Template</h4>
+              <p style="font-size:0.8rem; color:#475569; margin-bottom:10px;">Build a template like "Break, Coding, and Fitness" once, then click dates to instantly populate amber routine chips.</p>
+              <div style="background:#fef3c7; border:1px solid #fcd34d; border-radius:4px; padding:6px 10px; font-family:var(--font-mono); font-size:0.75rem; color:#78350f;">
+                8:00 AM – 9:20 AM Coding<br>
+                9:20 AM – 10:00 AM Break<br>
+                10:00 AM – 11:00 AM Focus
               </div>
-              <div class="block-title-text">Morning Prep</div>
             </div>
 
-            <!-- Block 2: Pastel Green (Deep Work - from screenshot 00:09) -->
-            <div class="canvas-block block-green">
-              <div class="canvas-block-header">
-                <div class="time-badge-group">
-                  <span class="time-pill-num">10</span>
-                  <span class="time-pill-num">00</span>
-                  <span class="time-badge-sep">-</span>
-                  <span class="time-pill-num">13</span>
-                  <span class="time-pill-num">00</span>
-                </div>
-                <div class="block-delete-icon">🗑</div>
-              </div>
-              <div class="block-title-text">Deep Work</div>
-            </div>
-
-            <!-- Block 3: Warm Pastel Orange with Yellow Glow (Sync Meeting - from screenshot 00:14) -->
-            <div class="canvas-block block-orange" style="margin-left: 60px;">
-              <div class="canvas-block-header">
-                <div class="time-badge-group">
-                  <span class="time-pill-num" style="background:#fff; border-color:#f59e0b; color:#b45309;">11</span>
-                  <span class="time-pill-num" style="background:#fff; border-color:#f59e0b; color:#b45309;">00</span>
-                  <span class="time-badge-sep">-</span>
-                  <span class="time-pill-num" style="background:#fff; border-color:#f59e0b; color:#b45309;">11</span>
-                  <span class="time-pill-num" style="background:#fff; border-color:#f59e0b; color:#b45309;">30</span>
-                </div>
-                <div class="block-delete-icon">🗑</div>
-              </div>
-              <div class="block-title-text" style="color: #78350f;">
-                <span>Sync Meeting</span>
+            <div style="border:1px solid #cbd5e1; border-radius:8px; padding:16px; background:#f8fafc;">
+              <h4 style="font-size:0.9rem; color:#0022f5; margin-bottom:8px;">1000+ Word Dictionary Autocompletion</h4>
+              <p style="font-size:0.8rem; color:#475569; margin-bottom:10px;">Type <code>morn</code> or <code>syn</code> and hit <kbd style="background:#e0f2fe; color:#0284c7; padding:1px 5px; border-radius:3px;">Tab</kbd> or <kbd style="background:#e0f2fe; color:#0284c7; padding:1px 5px; border-radius:3px;">Alt</kbd> to autocomplete instantly.</p>
+              <div style="background:#9edaa7; border:1.5px solid #62b370; border-radius:6px; padding:8px 12px; font-size:0.82rem; font-weight:700;">
+                08:00 – 09:00 Morning Prep
               </div>
             </div>
           </div>
@@ -1814,265 +898,59 @@
     </div>
   </section>
 
-  <!-- Section 1: Month View & Repeatable Templates -->
-  <section id="templates">
-    <div class="container">
-      <div class="two-col-grid">
-        <div class="feature-text-block">
-          <span class="feature-tag-chip">Repeatable Schedules</span>
-          <h2 class="feature-title-lg">Build the blueprint once.<br />Stamp it onto any day.</h2>
-          <p class="feature-desc">
-            Instead of typing out every recurring task across 30 days, save routines as master blueprints. In Remind Me, applying a whole day takes a single click.
-          </p>
-          <ul class="feature-checks">
-            <li>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Reusable Template Library:</strong> Save routines like <em>"Break, Coding, and Fitness"</em> with pre-set intervals and time limits.</span>
-            </li>
-            <li>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>One-Click Apply:</strong> Select a template from the mint sidebar and click any calendar day to instantly populate it.</span>
-            </li>
-            <li>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Non-Destructive Tweaks:</strong> Modify individual days without breaking your underlying master template.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Visual representation of Month View & Chips -->
-        <div class="interactive-card">
-          <div class="simulator-top-label">
-            <span>SAVED TEMPLATE STAMPING</span>
-            <span style="color:#38bdf8;">JUNE 2026</span>
-          </div>
-
-          <div style="background:#ffffff; border-radius:8px; padding:16px; color:#0f172a;">
-            <div style="font-size:0.85rem; font-weight:700; color:#0022f5; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-              <span>Monday, June 15</span>
-              <span style="font-size:0.7rem; background:#dcfce7; color:#166534; padding:2px 8px; border-radius:9999px;">Applied</span>
-            </div>
-
-            <!-- The peach/amber chips from screenshots -->
-            <div style="display:flex; flex-direction:column; gap:6px;">
-              <div class="cal-schedule-chip" style="padding:6px 10px; font-size:0.75rem; text-align:left;">
-                <strong>8:00 AM – 9:20 AM</strong> Coding
-              </div>
-              <div class="cal-schedule-chip" style="padding:6px 10px; font-size:0.75rem; text-align:left;">
-                <strong>9:20 AM – 10:00 AM</strong> Break
-              </div>
-              <div class="cal-schedule-chip" style="padding:6px 10px; font-size:0.75rem; text-align:left;">
-                <strong>10:00 AM – 11:00 AM</strong> Coding & Focus
-              </div>
-            </div>
-
-            <div style="margin-top:14px; font-size:0.72rem; color:#64748b; font-family:var(--font-mono); border-top:1px solid #e2e8f0; padding-top:8px;">
-              Template: Break, Coding, and Fitness (16 blocks)
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 2: Word Completer / Keyboard-First (Exact Autocomplete Popover) -->
-  <section id="speed">
-    <div class="container">
-      <div class="two-col-grid" style="direction: rtl;">
-        <div class="feature-text-block" style="direction: ltr;">
-          <span class="feature-tag-chip">Word Completer</span>
-          <h2 class="feature-title-lg">1000+ Word Dictionary.<br />Less clicking, zero typing drag.</h2>
-          <p class="feature-desc">
-            As you type in a block name, Remind Me searches its built-in 1000+ word dictionary and surfaces suggestions with immediate <code style="color:#38bdf8; font-family:var(--font-mono);">[Alt]</code> and <code style="color:#38bdf8; font-family:var(--font-mono);">[Tab]</code> hotkeys.
-          </p>
-          <ul class="feature-checks">
-            <li>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Instant Tab Completion:</strong> Type <em>"mo"</em> and hit Tab for <em>"Morning"</em>, or Alt for <em>"monitor"</em>.</span>
-            </li>
-            <li>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Sub-Millisecond Keyboard Entry:</strong> No modal dialogs, no mouse hunting, no date pickers.</span>
-            </li>
-            <li>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Automatic Block Sizing:</strong> Start and end times snap smoothly into the timeline ruler.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Interactive Autocomplete Simulator Box -->
-        <div class="interactive-card" style="direction: ltr;">
-          <div class="simulator-top-label">
-            <span>LIVE WORD COMPLETER DEMO</span>
-            <span>PRESS TAB OR CLICK SUGGESTION</span>
-          </div>
-
-          <div class="mock-editor-segment">
-            <!-- Block with active input and dropdown popover -->
-            <div class="canvas-block block-green" style="margin-bottom:0; position:relative;">
-              <div class="canvas-block-header">
-                <div class="time-badge-group">
-                  <span class="time-pill-num">08</span>
-                  <span class="time-pill-num">00</span>
-                  <span class="time-badge-sep">-</span>
-                  <span class="time-pill-num">09</span>
-                  <span class="time-pill-num">00</span>
-                </div>
-                <div class="block-delete-icon">🗑</div>
-              </div>
-
-              <!-- Sim Input -->
-              <div style="font-weight:700; font-size:0.95rem; color:#0f172a; display:flex; align-items:center;">
-                <span id="demo-sim-typed">morn</span>
-                <span style="display:inline-block; width:2px; height:18px; background:#0284c7; margin-left:2px; animation:pulse 1s infinite;"></span>
-              </div>
-
-              <!-- The Real Autocomplete Popover Box from Screenshots 00:03 & 00:04 -->
-              <div class="autocomplete-popover" id="demo-autocomplete-box">
-                <div class="autocomplete-row" onclick="applyDemoWord('morning')">
-                  <span id="auto-opt-alt">morning</span>
-                  <span class="kbd-tag-pill">Alt</span>
-                </div>
-                <div class="autocomplete-row" onclick="applyDemoWord('Morning Prep')" style="background:#f8fafc;">
-                  <span id="auto-opt-tab"><strong>Morning</strong></span>
-                  <span class="kbd-tag-pill">Tab</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Buttons to test other screenshot words -->
-          <div class="sim-chips-bar">
-            <span style="font-size:0.72rem; color:var(--text-dim); font-family:var(--font-mono); align-self:center;">Try typing:</span>
-            <button class="sim-word-btn" onclick="testCompleter('mo', 'monitor', 'Morning')">"mo" (monitor / Morning)</button>
-            <button class="sim-word-btn" onclick="testCompleter('syn', 'syncmeeting', 'Sync Meeting')">"syn" (Sync Meeting)</button>
-            <button class="sim-word-btn" onclick="testCompleter('l', 'lunch', 'Lunch')">"l" (Lunch)</button>
-            <button class="sim-word-btn" onclick="testCompleter('proj', 'project', 'Project Deep Work')">"proj" (Project)</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 3: ADHD Mode & Prompts -->
-  <section id="adhd">
-    <div class="container">
-      <div class="two-col-grid">
-        <div class="feature-text-block">
-          <span class="feature-tag-chip">ADHD-Friendly Scheduling</span>
-          <h2 class="feature-title-lg">Designed to bypass distraction and executive fatigue.</h2>
-          <p class="feature-copy">
-            Silent calendar banners get lost behind browser tabs. Remind Me includes a dedicated <strong>ADHD Mode</strong> with configurable time interval check-ins (5m, 10m, 15m) and crisp audible alerts before transitions happen.
-          </p>
-          <ul class="feature-checks">
-            <li>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Pre-Activity Warnings:</strong> Audible notice before the next scheduled block starts so context switching isn't jarring.</span>
-            </li>
-            <li>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Custom Audio & Volume:</strong> Use clean built-in bell chimes or load your own custom audio alert files.</span>
-            </li>
-            <li>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Visual Glow Cues:</strong> Highlighting blocks in pastel yellow/amber keeps your eye anchored to the current task.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- ADHD Mode Widget Demonstration Card -->
-        <div class="adhd-feature-box">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:1px solid #e2e8f0; padding-bottom:10px;">
-            <div style="display:flex; align-items:center; gap:8px;">
-              <span style="font-weight:700; color:#0f172a;">ADHD Mode Controls</span>
-            </div>
-            <span style="font-size:0.75rem; font-family:var(--font-mono); color:#16a34a; background:#dcfce7; padding:2px 8px; border-radius:4px;">● Enabled</span>
-          </div>
-
-          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:14px; margin-bottom:16px;">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <div>
-                <div style="font-weight:700; font-size:0.88rem; color:#0f172a;">Interval Alert Setting</div>
-                <div style="font-size:0.75rem; color:#64748b;">Audio pulse interval before block switch</div>
-              </div>
-              <!-- Real pill widget -->
-              <div class="adhd-mode-pill">
-                <span>ADHD Mode</span>
-                <div class="adhd-switch">
-                  <div class="adhd-switch-knob"></div>
-                </div>
-                <div class="adhd-dropdown">
-                  <span>10 min ▼</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Notification preview -->
-          <div style="background:#fffbeb; border:1px solid #fde68a; border-left:4px solid #f59e0b; border-radius:6px; padding:12px; margin-bottom:14px;">
-            <div style="font-size:0.7rem; font-family:var(--font-mono); font-weight:700; color:#b45309; text-transform:uppercase;">Next up in 10 minutes</div>
-            <div style="font-weight:700; font-size:0.95rem; color:#78350f;">Deep Work Block (10:00 AM)</div>
-          </div>
-
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span style="font-size:0.75rem; color:#64748b; font-family:var(--font-mono);">Acoustic Bell Chime</span>
-            <button class="btn btn-outline btn-sm" onclick="playChimeSound(this)" style="background:#0022f5; color:#fff; border:none;">
-              🔊 Play Alert Chime
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4: 100% Offline & Zero Telemetry -->
-  <section id="offline">
+  <!-- Core Features -->
+  <section id="features">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Local-Only Architecture</span>
-        <h2 class="section-heading">Runs offline. No cloud accounts. Zero tracking.</h2>
+        <span class="section-eyebrow">Engineered For Focus</span>
+        <h2 class="section-heading">Fast planning for routines you actually repeat</h2>
         <p class="section-summary">
-          Your daily life isn't a telemetry stream. Remind Me runs entirely on your local hardware without external web servers, tracking cookies, or internet dependencies.
+          Remind Me is not a bloated enterprise calendar. It is a focused, offline 24-hour blueprint tool built to reduce the friction of daily routine management.
         </p>
       </div>
 
-      <div class="offline-grid">
-        <div class="offline-card">
-          <div class="offline-icon-box">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.58 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+      <div class="feature-grid-3">
+        <div class="feature-card">
+          <div class="f-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </div>
-          <h3 class="offline-title">Works Without Wi-Fi</h3>
-          <p class="offline-desc">Launch the executable anywhere: trains, flights, or distraction-free offline setups. Zero network calls are made.</p>
+          <h3 class="f-title">Repeatable Blueprints</h3>
+          <p class="f-desc">
+            Save entire days as reusable templates. Stamp them onto any calendar day in a single click without repainting your week from scratch.
+          </p>
         </div>
 
-        <div class="offline-card">
-          <div class="offline-icon-box">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <div class="feature-card">
+          <div class="f-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.001M10 8h.001M14 8h.001M18 8h.001M8 12h.001M12 12h.001M16 12h.001M7 16h10"/></svg>
           </div>
-          <h3 class="offline-title">Local File Storage</h3>
-          <p class="offline-desc">Your templates and schedules are saved directly to local storage on your machine. You own your schedule data completely.</p>
+          <h3 class="f-title">1000+ Word Completer</h3>
+          <p class="f-desc">
+            Keep your hands on the keyboard. Fast-type block names and complete activities instantly with built-in <code>[Alt]</code> and <code>[Tab]</code> shortcuts.
+          </p>
         </div>
 
-        <div class="offline-card">
-          <div class="offline-icon-box">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <div class="feature-card">
+          <div class="f-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
           </div>
-          <h3 class="offline-title">No Signups, No Accounts</h3>
-          <p class="offline-desc">Download, extract the archive, and immediately start planning. No passwords, no verification emails, no advertising SDKs.</p>
+          <h3 class="f-title">ADHD Interval Reminders</h3>
+          <p class="f-desc">
+            Toggle ADHD Mode with configurable countdown warnings (5, 10, 15 min) and customizable audio bells designed to break hyperfocus and procrastination.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 5: Downloads & Platform Matrix -->
+  <!-- Downloads & Platforms -->
   <section id="download">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Available Downloads</span>
+        <span class="section-eyebrow">Cross-Platform</span>
         <h2 class="section-heading">Download Remind Me</h2>
         <p class="section-summary">
-          Available for Windows, macOS, Android, and playable directly in your web browser.
+          Runs 100% offline. No cloud accounts, no sync delays, and zero tracking SDKs.
         </p>
       </div>
 
@@ -2085,8 +963,8 @@
           <div class="dl-name">Windows</div>
           <div class="dl-size">Remind_Me_Windows.zip • 11 MB</div>
           <div class="dl-btn-wrap">
-            <a href="https://frog1230.itch.io/remind-me" class="btn btn-download btn-sm" style="width:100%;" target="_blank" rel="noopener">
-              Download ZIP
+            <a href="https://frog1230.itch.io/remind-me" class="btn btn-cobalt btn-sm" style="width:100%;" target="_blank" rel="noopener">
+              Download for Windows
             </a>
           </div>
         </div>
@@ -2099,8 +977,8 @@
           <div class="dl-name">macOS</div>
           <div class="dl-size">Remind_Me_Mac.zip • 53 MB</div>
           <div class="dl-btn-wrap">
-            <a href="https://frog1230.itch.io/remind-me" class="btn btn-download btn-sm" style="width:100%;" target="_blank" rel="noopener">
-              Download Mac
+            <a href="https://frog1230.itch.io/remind-me" class="btn btn-cobalt btn-sm" style="width:100%;" target="_blank" rel="noopener">
+              Download for macOS
             </a>
           </div>
         </div>
@@ -2113,7 +991,7 @@
           <div class="dl-name">Android</div>
           <div class="dl-size">Remind_Me.apk • 48 MB</div>
           <div class="dl-btn-wrap">
-            <a href="https://frog1230.itch.io/remind-me" class="btn btn-download btn-sm" style="width:100%;" target="_blank" rel="noopener">
+            <a href="https://frog1230.itch.io/remind-me" class="btn btn-cobalt btn-sm" style="width:100%;" target="_blank" rel="noopener">
               Download APK
             </a>
           </div>
@@ -2125,10 +1003,10 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           </div>
           <div class="dl-name">Web Demo</div>
-          <div class="dl-size">Instant in browser • No install</div>
+          <div class="dl-size">Extracted Web_RemindMe • HTML5</div>
           <div class="dl-btn-wrap">
-            <a href="https://frog1230.itch.io/remind-me-web-demo" class="btn btn-outline btn-sm" style="width:100%; border-color:#38bdf8; color:#fff;" target="_blank" rel="noopener">
-              Run in Browser
+            <a href="#demo" class="btn btn-outline btn-sm" style="width:100%; border-color:#38bdf8; color:#fff;">
+              Jump to Player ↑
             </a>
           </div>
         </div>
@@ -2144,14 +1022,14 @@
           Build your routine once. Then reuse it.
         </h2>
         <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 580px; margin: 0 auto 30px;">
-          Download Remind Me today or try the instant browser demo directly on itch.io.
+          Download Remind Me today or test the interactive web demo directly in your browser.
         </p>
         <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-          <a href="https://frog1230.itch.io/remind-me" class="btn btn-download" style="padding: 13px 32px; font-size: 1rem;" target="_blank" rel="noopener">
+          <a href="https://frog1230.itch.io/remind-me" class="btn btn-cobalt" style="padding: 13px 32px; font-size: 1rem;" target="_blank" rel="noopener">
             Get Remind Me on itch.io
           </a>
-          <a href="https://frog1230.itch.io/remind-me-web-demo" class="btn btn-outline" style="padding: 13px 26px; font-size: 1rem;" target="_blank" rel="noopener">
-            Launch Web Demo
+          <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/what-is-remind-me.html" class="btn btn-outline" style="padding: 13px 26px; font-size: 1rem;">
+            Read the FAQ Guide
           </a>
         </div>
       </div>
@@ -2164,128 +1042,93 @@
       <div>
         <strong>Remind Me: 24h Blueprint</strong> — Developed by <strong>Frog1230</strong>.
         <div style="margin-top: 4px; font-size: 0.78rem;">
-          In active development. All screenshots reference Janis Flury's original build on itch.io.
+          In active development. An offline, lightweight 24-hour routine blueprint.
         </div>
       </div>
       <div class="footer-nav">
+        <a href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/">Official Site</a>
         <a href="https://frog1230.itch.io/remind-me" target="_blank" rel="noopener">itch.io Page</a>
         <a href="https://frog1230.itch.io/remind-me-web-demo" target="_blank" rel="noopener">Web Demo</a>
-        <a href="https://frog1230.itch.io/remind-me/devlog" target="_blank" rel="noopener">Devlog</a>
       </div>
     </div>
   </footer>
 
-  <!-- Interactive JavaScript Engine -->
+  <!-- Interactive JavaScript Engine for Web_RemindMe.zip -->
   <script>
-    // Switch between Month Calendar View and Template Editor View in Mockup
-    function switchMockupView(view) {
-      const calView = document.getElementById('hero-cal-view');
-      const editorView = document.getElementById('hero-editor-view');
-      const btnCal = document.getElementById('btn-show-cal');
-      const btnEditor = document.getElementById('btn-show-editor');
+    // Configuration: Target folder where Web_RemindMe.zip is extracted
+    const DEMO_PATHS = [
+      './Web_RemindMe/index.html',
+      './Web_RemindMe/Web_RemindMe.html',
+      './Web_RemindMe/',
+      'https://frog1230.itch.io/remind-me-web-demo' // Live fallback
+    ];
+    let activePathIndex = 0;
 
-      if (view === 'editor') {
-        calView.style.display = 'none';
-        editorView.style.display = 'block';
-        btnCal.classList.remove('active');
-        btnEditor.classList.add('active');
+    function startLiveDemo() {
+      const overlay = document.getElementById('launch-overlay');
+      const iframe = document.getElementById('web-remindme-iframe');
+      
+      overlay.classList.add('hidden');
+      
+      // Load the extracted web demo path
+      if (iframe.src === 'about:blank' || !iframe.src) {
+        iframe.src = DEMO_PATHS[activePathIndex];
+      }
+
+      document.getElementById('status-title-meta').innerText = 'Live Engine Running';
+    }
+
+    function reloadWebDemo() {
+      const iframe = document.getElementById('web-remindme-iframe');
+      if (iframe.src && iframe.src !== 'about:blank') {
+        iframe.src = iframe.src;
       } else {
-        calView.style.display = 'block';
-        editorView.style.display = 'none';
-        btnCal.classList.add('active');
-        btnEditor.classList.remove('active');
+        startLiveDemo();
       }
     }
 
-    // Toggle ADHD switch knob
-    function toggleADHDSwitch(el) {
-      const knob = el.querySelector('.adhd-switch-knob');
-      if (el.dataset.state === 'off') {
-        el.dataset.state = 'on';
-        el.style.background = '#f97316';
-        knob.style.right = '2px';
-        knob.style.left = 'auto';
+    function toggleFullscreenDemo() {
+      const viewport = document.getElementById('viewport-box');
+      if (!document.fullscreenElement) {
+        if (viewport.requestFullscreen) {
+          viewport.requestFullscreen();
+        } else if (viewport.webkitRequestFullscreen) {
+          viewport.webkitRequestFullscreen();
+        }
       } else {
-        el.dataset.state = 'off';
-        el.style.background = '#94a3b8';
-        knob.style.left = '2px';
-        knob.style.right = 'auto';
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
       }
     }
 
-    // Cycle ADHD Time in widget
-    function cycleADHDTime(el) {
-      const label = document.getElementById('adhd-time-label');
-      const times = ['5 min', '10 min', '15 min'];
-      let idx = times.indexOf(label.innerText);
-      idx = (idx + 1) % times.length;
-      label.innerText = times[idx];
-    }
+    function setAppMode(mode) {
+      const livePanel = document.getElementById('live-demo-panel');
+      const tourPanel = document.getElementById('tour-demo-panel');
+      const btnLive = document.getElementById('btn-tab-live');
+      const btnTour = document.getElementById('btn-tab-tour');
 
-    // Toggle Blocks / Tasks Segmented Buttons
-    function toggleSegmentTab(type) {
-      const blocksBtn = document.getElementById('seg-blocks-btn');
-      const tasksBtn = document.getElementById('seg-tasks-btn');
-
-      if (type === 'blocks') {
-        blocksBtn.className = 'seg-btn active-green';
-        tasksBtn.className = 'seg-btn';
+      if (mode === 'tour') {
+        livePanel.style.display = 'none';
+        tourPanel.classList.add('active');
+        btnLive.classList.remove('active');
+        btnTour.classList.add('active');
       } else {
-        blocksBtn.className = 'seg-btn';
-        tasksBtn.className = 'seg-btn active-orange';
+        livePanel.style.display = 'block';
+        tourPanel.classList.remove('active');
+        btnLive.classList.add('active');
+        btnTour.classList.remove('active');
       }
     }
 
-    // Interactive Word Completer Simulator
-    function testCompleter(query, altWord, tabWord) {
-      document.getElementById('demo-sim-typed').innerText = query;
-      document.getElementById('auto-opt-alt').innerText = altWord;
-      document.getElementById('auto-opt-tab').innerHTML = `<strong>${tabWord}</strong>`;
-      document.getElementById('demo-autocomplete-box').style.display = 'block';
-    }
-
-    function applyDemoWord(word) {
-      document.getElementById('demo-sim-typed').innerText = word;
-      document.getElementById('demo-autocomplete-box').style.display = 'none';
-    }
-
-    // Bell Chime Web Audio Synthesizer (Realistic tone for audio test)
-    let audioCtx = null;
-    function playChimeSound(btn) {
-      try {
-        if (!audioCtx) {
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        if (audioCtx.state === 'suspended') {
-          audioCtx.resume();
-        }
-
-        const now = audioCtx.currentTime;
-        const freqs = [880, 1760, 2640];
-        const gainNode = audioCtx.createGain();
-
-        gainNode.gain.setValueAtTime(0.35, now);
-        gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 1.8);
-        gainNode.connect(audioCtx.destination);
-
-        freqs.forEach(freq => {
-          const osc = audioCtx.createOscillator();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(freq, now);
-          osc.connect(gainNode);
-          osc.start(now);
-          osc.stop(now + 1.8);
-        });
-
-        if (btn) {
-          const orig = btn.innerText;
-          btn.innerText = '♪ Playing Chime...';
-          setTimeout(() => { btn.innerText = orig; }, 1800);
-        }
-      } catch (e) {
-        console.warn('Audio playback not permitted yet:', e);
-      }
-    }
+    // Auto-detect error loading local file and offer itch.io embed fallback if unextracted
+    window.addEventListener('DOMContentLoaded', () => {
+      const iframe = document.getElementById('web-remindme-iframe');
+      iframe.onerror = () => {
+        console.warn('Local Web_RemindMe folder not found, falling back to hosted web demo.');
+        iframe.src = DEMO_PATHS[DEMO_PATHS.length - 1];
+      };
+    });
   </script>
 </body>
 </html>
