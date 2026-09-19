@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="description"
+content="Learn how proximity-based calendar interface design keeps controls near events, reduces visual searching, and shapes Remind Me's planning workflow."
+
+>
+
+  <meta name="author" content="Janis Flury">
+
+  <link
+    rel="canonical"
+    href="https://fluryjanis.github.io/frog1230.github.io/calendar-interface-design-why-controls-should-stay-near-events.html"
+  >
+
+<meta
+property="og:title"
+content="Calendar Interface Design: Why Controls Should Stay Near Events"
+
+>
+
+<meta
+property="og:description"
+content="Learn how proximity-based calendar interface design keeps controls near events and how Remind Me applies the principle to planning."
+
+>
+
+<meta
+property="og:url"
+content="https://fluryjanis.github.io/frog1230.github.io/calendar-interface-design-why-controls-should-stay-near-events.html"
+
+>
+
+  <meta property="og:type" content="article">
+
+  <title>
+    Calendar Interface Design: Why Controls Should Stay Near Events | Remind Me
+  </title>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://fluryjanis.github.io/frog1230.github.io/calendar-interface-design-why-controls-should-stay-near-events.html"
+    },
+    "headline": "Calendar Interface Design: Why Controls Should Stay Near Events",
+    "description": "Learn how proximity-based calendar interface design keeps controls near events, reduces visual searching, and shapes Remind Me's planning workflow.",
+    "author": {
+      "@type": "Person",
+      "name": "Janis Flury",
+      "url": "https://fluryjanis.github.io/frog1230.github.io/"
+    },
+    "datePublished": "2026-09-19",
+    "dateModified": "2026-09-19"
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #172033;
+      --text-soft: #475569;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --green: #166534;
+      --green-soft: #ecfdf3;
+      --green-border: #86efac;
+      --shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hero {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 3rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 1rem;
+      padding: 0.4rem 0.7rem;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      color: #0f172a;
+    }
+
+    .hero-intro {
+      max-width: 720px;
+      margin: 1.5rem 0 0;
+      font-size: 1.15rem;
+      color: var(--text-soft);
+    }
+
+    .article-meta {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0.75rem 1.05rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .button-primary:hover {
+      background: var(--accent-dark);
+      color: #ffffff;
+    }
+
+    .button-secondary {
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      background: var(--surface-soft);
+      color: var(--text);
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    article {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1.5rem, 4vw, 3.5rem);
+    }
+
+    .definition {
+      padding: 1.35rem 1.5rem;
+      margin-bottom: 2.5rem;
+      background: var(--accent-soft);
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+    }
+
+    .definition p {
+      margin: 0;
+      font-size: 1.08rem;
+      color: #1e3a8a;
+    }
+
+    .toc {
+      margin: 0 0 3rem;
+      padding: 1.35rem 1.5rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .toc h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.15rem;
+    }
+
+    .toc ol {
+      margin: 0;
+    }
+
+    .toc li {
+      margin-bottom: 0.4rem;
+    }
+
+    .section {
+      margin-top: 3.5rem;
+      scroll-margin-top: 90px;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.65rem, 3vw, 2.15rem);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      color: #0f172a;
+    }
+
+    h3 {
+      margin: 2rem 0 0.65rem;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      color: #1e293b;
+    }
+
+    p,
+    li {
+      font-size: 1.03rem;
+      color: var(--text-soft);
+    }
+
+    p {
+      margin: 0 0 1.2rem;
+    }
+
+    ul,
+    ol {
+      margin: 1rem 0 1.5rem;
+      padding-left: 1.3rem;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+      padding-left: 0.2rem;
+    }
+
+    strong {
+      color: #1e293b;
+    }
+
+    em {
+      color: #334155;
+    }
+
+    code {
+      padding: 0.15rem 0.35rem;
+      border-radius: 5px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      font-size: 0.9em;
+      color: #334155;
+    }
+
+    .callout {
+      margin: 2rem 0;
+      padding: 1.25rem 1.35rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .callout p {
+      margin: 0;
+      color: #334155;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .comparison-card {
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-soft);
+    }
+
+    .comparison-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-card p {
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 1.2rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .feature-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.45rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    .tradeoff-box {
+      margin-top: 2rem;
+      padding: 1.35rem;
+      background: var(--green-soft);
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+    }
+
+    .tradeoff-box h3 {
+      margin-top: 0;
+      color: var(--green);
+    }
+
+    .source-list {
+      margin-top: 1.5rem;
+    }
+
+    .source-list li {
+      margin-bottom: 0.7rem;
+    }
+
+    .cta {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: linear-gradient(180deg, #f8fbff 0%, #eff6ff 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 0.7rem;
+    }
+
+    .cta p {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 1.35rem;
+    }
+
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 700px) {
+      .site-header {
+        position: static;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      article {
+        padding: 1.4rem;
+      }
+
+      .comparison,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+
+
+  <a
+    class="brand"
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Remind Me
+  </a>
+
+  <div class="nav-links">
+
+    <a
+      href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Remind Me Planner Website
+    </a>
+
+    <a
+      href="https://frog1230.itch.io/remind-me"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Download Remind Me
+    </a>
+
+  </div>
+</nav>
+
+
+  </header>
+
+  <section class="hero">
+
+
+<p class="eyebrow">
+  Calendar UI Design &amp; Proximity
+</p>
+
+<h1>
+  Why Calendar Controls Should Stay Near What You Edit
+</h1>
+
+<p class="hero-intro">
+  Calendar interfaces are easier to understand when the controls for an
+  event or schedule block stay close to that item. This article explains
+  the proximity principle in UI design, where it helps in calendar
+  interfaces, and how Remind Me applies it to planning.
+</p>
+
+<p class="article-meta">
+  By Janis Flury · Remind Me ·
+  <time datetime="2026-09-19">
+    Published September 19, 2026
+  </time>
+</p>
+
+<div class="hero-actions">
+
+  <a
+    class="button button-primary"
+    href="https://frog1230.itch.io/remind-me"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Get Remind Me
+  </a>
+
+  <a
+    class="button button-secondary"
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Explore the Planner Website
+  </a>
+
+</div>
+
+
+  </section>
+
+  <main>
+    <article>
+
+
+  <div class="definition">
+
+    <p>
+      <strong>
+        Proximity-based interface design places related controls close
+        to the content they affect.
+      </strong>
+      In a calendar, this can mean editing an event's time inside the
+      event block, placing a delete action on the block itself, or
+      putting timeline controls beside the timeline.
+    </p>
+
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+
+    <h2>
+      In this article
+    </h2>
+
+    <ol>
+      <li>
+        <a href="#hidden-cost">
+          The hidden cost of distant calendar controls
+        </a>
+      </li>
+
+      <li>
+        <a href="#proximity-principle">
+          The proximity principle in UI design
+        </a>
+      </li>
+
+      <li>
+        <a href="#calendar-examples">
+          How proximity works in calendar interfaces
+        </a>
+      </li>
+
+      <li>
+        <a href="#remind-me">
+          How Remind Me uses proximity
+        </a>
+      </li>
+
+      <li>
+        <a href="#benefits">
+          What proximity can improve
+        </a>
+      </li>
+
+      <li>
+        <a href="#tradeoffs">
+          Tradeoffs and accessibility considerations
+        </a>
+      </li>
+    </ol>
+
+  </nav>
+
+  <section class="section" id="hidden-cost">
+
+    <h2>
+      The Hidden Cost of Distant Calendar Controls
+    </h2>
+
+    <p>
+      A single extra interface step may not seem important. The effect
+      becomes more noticeable when the same type of edit happens again
+      and again while you are building a schedule.
+    </p>
+
+    <p>
+      Imagine selecting a calendar event, opening a separate editing
+      panel, finding its time settings, changing the value, saving, and
+      returning to the schedule. That workflow can be perfectly valid,
+      but it separates the action from the thing being changed.
+    </p>
+
+    <p>
+      When you are making many small adjustments, the main cost is not
+      necessarily the number of clicks alone. You also have to repeatedly
+      locate the right control and keep track of which item that control
+      belongs to.
+    </p>
+
+    <ol>
+
+      <li>
+        Select the event or schedule block.
+      </li>
+
+      <li>
+        Open a dialog, side panel, or editing screen.
+      </li>
+
+      <li>
+        Find the setting you want to change.
+      </li>
+
+      <li>
+        Make the change and return to the schedule.
+      </li>
+
+    </ol>
+
+    <div class="callout">
+
+      <p>
+        <strong>
+          Repeated editing makes interface distance more noticeable.
+        </strong>
+        A control that is easy to understand in context may require more
+        searching when it is separated from the object it affects.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="section" id="proximity-principle">
+
+    <h2>
+      The Proximity Principle in UI Design
+    </h2>
+
+    <p>
+      Proximity is a well-established visual design principle: elements
+      that are close together are more likely to be perceived as related.
+      In user interfaces, that relationship can help people understand
+      which controls belong to which content.
+    </p>
+
+    <p>
+      Nielsen Norman Group describes this as the
+      <a
+        href="https://www.nngroup.com/articles/gestalt-proximity/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Gestalt principle of proximity
+      </a>.
+      The basic idea is simple: related elements should generally be
+      grouped together, while unrelated elements should be separated.
+    </p>
+
+    <div class="comparison">
+
+      <div class="comparison-card">
+
+        <h3>
+          Distant Controls
+        </h3>
+
+        <p>
+          The event is shown in the schedule while its editing controls
+          live elsewhere in a menu, dialog, or properties panel.
+        </p>
+
+      </div>
+
+      <div class="comparison-card">
+
+        <h3>
+          Proximity Controls
+        </h3>
+
+        <p>
+          Common actions are placed on or beside the event, block, or
+          timeline they directly affect.
+        </p>
+
+      </div>
+
+    </div>
+
+    <p>
+      This does not mean that every control should be placed directly
+      inside the calendar. It means that the visual relationship between
+      a control and its target should make sense.
+    </p>
+
+  </section>
+
+  <section class="section" id="calendar-examples">
+
+    <h2>
+      How Proximity Works in Calendar Interfaces
+    </h2>
+
+    <p>
+      Calendar software provides several natural opportunities for
+      proximity-based interface design because many actions have an
+      obvious target.
+    </p>
+
+    <h3>
+      Event time controls
+    </h3>
+
+    <p>
+      If you are changing when an event starts or ends, the relevant
+      time controls can appear within the event editor or directly beside
+      the schedule block. This keeps the time setting associated with the
+      event being changed.
+    </p>
+
+    <h3>
+      Actions for a schedule block
+    </h3>
+
+    <p>
+      Actions such as removing, duplicating, or editing a schedule block
+      can often be associated directly with that block. The control then
+      communicates its target through placement as well as through its
+      label or icon.
+    </p>
+
+    <h3>
+      Timeline controls
+    </h3>
+
+    <p>
+      A zoom or scale control is easier to relate to a schedule when it
+      is located near the timeline or schedule canvas. Moving that
+      control into an unrelated global settings area can make its
+      relationship to the visible schedule less obvious.
+    </p>
+
+    <h3>
+      The key distinction
+    </h3>
+
+    <p>
+      Proximity is most useful when there is a clear connection between
+      an action and its target. A control should be nearby because it is
+      related, not simply because there is empty space available.
+    </p>
+
+  </section>
+
+  <section class="section" id="remind-me">
+
+    <h2>
+      How Remind Me Uses Proximity-Based Controls
+    </h2>
+
+    <p>
+      <a
+        href="https://frog1230.itch.io/remind-me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Remind Me
+      </a>
+      uses proximity-based controls in its Template Editor and planning
+      workflow. The goal is to keep frequently used actions close to the
+      schedule elements being edited.
+    </p>
+
+    <h3>
+      1. Inline Time Controls
+    </h3>
+
+    <p>
+      In the Template Editor, a time block such as
+      <code>09 : 30 - 11 : 00</code>
+      contains its own time inputs.
+    </p>
+
+    <p>
+      The hour and minute values sit inside the block instead of being
+      separated into a distant properties panel. You can therefore edit
+      the timing while looking directly at the schedule block.
+    </p>
+
+    <h3>
+      2. Actions Attached to the Block
+    </h3>
+
+    <p>
+      Removing a block is handled directly from the block using the
+      inline
+      <code>✕</code>
+      control.
+    </p>
+
+    <p>
+      The placement makes the relationship between the action and its
+      target immediately visible. You do not have to find a separate
+      menu simply to remove that specific piece of the schedule.
+    </p>
+
+    <h3>
+      3. Timeline Controls Near the Timeline
+    </h3>
+
+    <p>
+      The amount of schedule information visible on screen depends partly
+      on the timeline scale. Remind Me provides a ruler zoom control near
+      the schedule canvas, including a
+      <code>Default (83px/hr)</code>
+      preset.
+    </p>
+
+    <p>
+      Keeping the scale control near the schedule makes it part of the
+      same working context rather than treating it as an unrelated global
+      preference.
+    </p>
+
+    <h3>
+      4. Keyboard-Friendly Editing
+    </h3>
+
+    <p>
+      Proximity controls do not require every action to be performed with
+      a mouse. Remind Me also includes keyboard shortcuts for common
+      planning tasks.
+    </p>
+
+    <p>
+      This creates another path through the interface: controls can stay
+      visually close to the schedule while keyboard interaction reduces
+      the need to repeatedly move through menus.
+    </p>
+
+  </section>
+
+  <section class="section" id="benefits">
+
+    <h2>
+      What Proximity Can Improve
+    </h2>
+
+    <p>
+      The main benefit of proximity is not simply "fewer clicks." Keeping
+      related controls together can make the relationship between an
+      action and its target easier to see and understand.
+    </p>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+
+        <h3>
+          Less Visual Searching
+        </h3>
+
+        <p>
+          Users can spend less time looking through unrelated panels or
+          menus for a control that belongs to the item already on screen.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>
+          Clearer Relationships
+        </h3>
+
+        <p>
+          A control positioned on an event or beside it can make its
+          target easier to identify.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>
+          Fewer Context Switches
+        </h3>
+
+        <p>
+          Common changes can happen without repeatedly moving away from
+          the schedule and then returning to it.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>
+          More Direct Planning
+        </h3>
+
+        <p>
+          When editing happens in the same visual area as the schedule,
+          the interface stays centered on the task of planning time.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="callout">
+
+      <p>
+        <strong>
+          Proximity can reduce interface friction, but it does not
+          guarantee faster task completion.
+        </strong>
+        The overall design, control size, wording, layout, and complexity
+        of the task still matter.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      When Proximity Should Not Be Used
+    </h2>
+
+    <p>
+      Putting every setting directly onto a calendar event would create
+      its own usability problem. A schedule could quickly become crowded
+      with controls that most users rarely need.
+    </p>
+
+    <p>
+      Some settings are naturally global rather than local. Examples
+      include account options, integrations, synchronization behavior,
+      permissions, and application-wide preferences.
+    </p>
+
+    <p>
+      A useful rule is to keep a control close to its target when the
+      action is common, contextual, or directly tied to a specific object.
+      Less frequent and broader configuration can remain in menus or
+      dedicated settings screens.
+    </p>
+
+    <div class="callout">
+
+      <p>
+        <strong>
+          Good proximity design is selective.
+        </strong>
+        The goal is not to put everything everywhere. The goal is to keep
+        related actions and content visually connected.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="section" id="tradeoffs">
+
+    <h2>
+      Tradeoffs and Accessibility Considerations
+    </h2>
+
+    <p>
+      Proximity-based controls still need enough space to remain readable,
+      discoverable, and usable.
+    </p>
+
+    <div class="tradeoff-box">
+
+      <h3>
+        What to Keep in Mind
+      </h3>
+
+      <ul>
+
+        <li>
+          <strong>Limited space:</strong>
+          Small schedule blocks may not have enough room for several
+          inline controls without making the layout crowded.
+        </li>
+
+        <li>
+          <strong>Control density:</strong>
+          More visible controls can increase visual complexity even when
+          each individual control is useful.
+        </li>
+
+        <li>
+          <strong>Touch interaction:</strong>
+          Controls that are close together still need enough separation
+          and target area to avoid accidental activation.
+        </li>
+
+        <li>
+          <strong>Responsive layouts:</strong>
+          A desktop layout may have room for inline controls that need to
+          move or collapse on smaller screens.
+        </li>
+
+      </ul>
+
+    </div>
+
+    <p>
+      For web interfaces, WCAG 2.2 Success Criterion 2.5.8 specifies a
+      minimum pointer target size of 24 by 24 CSS pixels, subject to
+      documented exceptions. The criterion is intended to reduce
+      accidental activation and make controls easier to operate.
+    </p>
+
+    <p>
+      The practical lesson is important: proximity should bring related
+      controls closer together without making those controls too small
+      or too tightly packed to use comfortably.
+    </p>
+
+    <p>
+      See the
+      <a
+        href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        W3C explanation of Target Size (Minimum)
+      </a>
+      for the full requirement and its exceptions.
+    </p>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Less Interface Friction, More Direct Planning
+    </h2>
+
+    <p>
+      A calendar is a visual workspace for working with time. When the
+      controls for an event are separated from that event, users may
+      need to search for the right action and repeatedly move between
+      different parts of the interface.
+    </p>
+
+    <p>
+      Proximity-based design offers a simple alternative: keep relevant
+      controls near the content they affect.
+    </p>
+
+    <p>
+      In a calendar interface, that can mean placing time inputs inside
+      schedule blocks, attaching common actions to those blocks, and
+      keeping timeline controls near the timeline itself.
+    </p>
+
+    <p>
+      Remind Me follows this approach in its planning workflow by keeping
+      frequently used editing actions in the same visual context as the
+      schedule.
+    </p>
+
+    <p>
+      The result is not an argument that every calendar should look the
+      same. It is a design principle: when an action is closely connected
+      to an object, the interface should make that connection easy to
+      see.
+    </p>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Sources and Further Reading
+    </h2>
+
+    <ul class="source-list">
+
+      <li>
+        <a
+          href="https://www.nngroup.com/articles/gestalt-proximity/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Nielsen Norman Group: Proximity Principle in Visual Design
+        </a>
+        — an overview of how spatial proximity communicates relationships
+        between interface elements.
+      </li>
+
+      <li>
+        <a
+          href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          W3C: Understanding Target Size (Minimum)
+        </a>
+        — guidance for making pointer targets easier to activate.
+      </li>
+
+    </ul>
+
+  </section>
+
+  <section class="cta">
+
+    <h2>
+      Explore Remind Me
+    </h2>
+
+    <p>
+      Learn more about Remind Me's approach to focused planning and
+      interface design, or try the planner yourself.
+    </p>
+
+    <div class="cta-actions">
+
+      <a
+        class="button button-primary"
+        href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Explore the Planner Website
+      </a>
+
+      <a
+        class="button button-secondary"
+        href="https://frog1230.itch.io/remind-me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download Remind Me
+      </a>
+
+    </div>
+
+  </section>
+
+</article>
+
+
+  </main>
+
+  <footer>
+
+
+<p>
+  &copy; Remind Me. Thoughtfully engineered planning tools.
+  <br>
+
+  <a
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Planner Website
+  </a>
+
+  &nbsp;·&nbsp;
+
+  <a
+    href="https://frog1230.itch.io/remind-me"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Download
+  </a>
+</p>
+
+
+  </footer>
+
+</body>
+</html>
