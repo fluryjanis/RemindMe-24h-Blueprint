@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="description"
+content="Learn how to use a calendar for personal routines, how routines differ from recurring events, and how Remind Me uses reusable structures for daily planning."
+
+>
+
+  <link
+    rel="canonical"
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/blog/How-to-Use-a-Calendar-for-Routines.html"
+  >
+
+  <title>How to Use a Calendar for Routines | Remind Me</title>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to Use a Calendar for Routines",
+    "description": "Learn how to use a calendar for personal routines, how routines differ from recurring events, and how Remind Me uses reusable structures for daily planning.",
+    "author": {
+      "@type": "Person",
+      "name": "Janis Flury"
+    },
+    "datePublished": "2026-09-19",
+    "dateModified": "2026-09-19",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://fluryjanis.github.io/RemindMe-24h-Blueprint/blog/How-to-Use-a-Calendar-for-Routines.html"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #172033;
+      --text-soft: #475569;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --green: #166534;
+      --green-soft: #ecfdf3;
+      --green-border: #86efac;
+      --shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hero {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 3rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 1rem;
+      padding: 0.4rem 0.7rem;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      color: #0f172a;
+    }
+
+    .hero-intro {
+      max-width: 720px;
+      margin: 1.5rem 0 0;
+      font-size: 1.15rem;
+      color: var(--text-soft);
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      margin: 1rem 0 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .article-meta strong {
+      color: var(--text-soft);
+    }
+
+    .article-meta time {
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0.75rem 1.05rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .button-primary:hover {
+      background: var(--accent-dark);
+      color: #ffffff;
+    }
+
+    .button-secondary {
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      background: var(--surface-soft);
+      color: var(--text);
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    article {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1.5rem, 4vw, 3.5rem);
+    }
+
+    .definition {
+      padding: 1.35rem 1.5rem;
+      margin-bottom: 2.5rem;
+      background: var(--accent-soft);
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+    }
+
+    .definition p {
+      margin: 0;
+      font-size: 1.08rem;
+      color: #1e3a8a;
+    }
+
+    .section {
+      margin-top: 3.5rem;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.65rem, 3vw, 2.15rem);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      color: #0f172a;
+    }
+
+    h3 {
+      margin: 2rem 0 0.65rem;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      color: #1e293b;
+    }
+
+    p,
+    li {
+      font-size: 1.03rem;
+      color: var(--text-soft);
+    }
+
+    p {
+      margin: 0 0 1.2rem;
+    }
+
+    ul,
+    ol {
+      margin: 1rem 0 1.5rem;
+      padding-left: 1.3rem;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+      padding-left: 0.2rem;
+    }
+
+    strong {
+      color: #1e293b;
+    }
+
+    em {
+      color: #334155;
+    }
+
+    code {
+      padding: 0.15rem 0.35rem;
+      border-radius: 5px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      font-size: 0.9em;
+      color: #334155;
+    }
+
+    .callout {
+      margin: 2rem 0;
+      padding: 1.25rem 1.35rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .callout p {
+      margin: 0;
+      color: #334155;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .comparison-card {
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-soft);
+    }
+
+    .comparison-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-card p {
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 1.2rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .feature-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.45rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    .tradeoff-box {
+      margin-top: 2rem;
+      padding: 1.35rem;
+      background: var(--green-soft);
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+    }
+
+    .tradeoff-box h3 {
+      margin-top: 0;
+      color: var(--green);
+    }
+
+    .cta {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: linear-gradient(180deg, #f8fbff 0%, #eff6ff 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 0.7rem;
+    }
+
+    .cta p {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 1.35rem;
+    }
+
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 800px) {
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .site-header {
+        position: static;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      article {
+        padding: 1.4rem;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .article-meta {
+        line-height: 1.5;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+
+
+  <a
+    class="brand"
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Remind Me
+  </a>
+
+  <div class="nav-links">
+
+    <a
+      href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Main Website
+    </a>
+
+    <a
+      href="https://frog1230.itch.io/remind-me"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Download
+    </a>
+
+  </div>
+</nav>
+
+
+  </header>
+
+  <section class="hero">
+
+
+<p class="eyebrow">
+  Routine Planning &amp; Daily Structure
+</p>
+
+<h1>
+  How to Use a Calendar for Routines
+</h1>
+
+<p class="hero-intro">
+  A calendar can do more than hold appointments. When used for routines,
+  it can give recurring parts of your day a clear place in your schedule
+  without turning every habit into a separate event.
+</p>
+
+<p class="article-meta">
+  <strong>By Janis Flury</strong>
+  <span aria-hidden="true">·</span>
+  <span>Published</span>
+  <time datetime="2026-09-19">September 19, 2026</time>
+</p>
+
+<div class="hero-actions">
+
+  <a
+    class="button button-primary"
+    href="https://frog1230.itch.io/remind-me"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Get Remind Me
+  </a>
+
+  <a
+    class="button button-secondary"
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Visit the Main Website
+  </a>
+
+</div>
+
+
+  </section>
+
+  <main>
+    <article>
+
+
+  <div class="definition">
+
+    <p>
+      <strong>
+        Using a calendar for routines means giving repeated parts of your
+        day a defined place in your schedule.
+      </strong>
+      Instead of treating every habit as a disconnected task or recurring
+      event, you can organize related activities into a structure that
+      reflects how your day actually works.
+    </p>
+
+  </div>
+
+  <section class="section">
+
+    <h2>
+      The Disconnect Between Habits, To-Do Lists, and Calendars
+    </h2>
+
+    <p>
+      Personal routines often fall between two different kinds of planning
+      tools: task lists and calendars.
+    </p>
+
+    <div class="comparison">
+
+      <div class="comparison-card">
+
+        <h3>
+          To-Do Lists
+        </h3>
+
+        <p>
+          A list can tell you that you need to exercise, read, plan, or
+          prepare, but it does not necessarily tell you when those actions
+          fit into your day.
+        </p>
+
+      </div>
+
+      <div class="comparison-card">
+
+        <h3>
+          Recurring Events
+        </h3>
+
+        <p>
+          A calendar can assign activities to specific times, but turning
+          every routine step into a recurring event can make the calendar
+          harder to maintain.
+        </p>
+
+      </div>
+
+      <div class="comparison-card">
+
+        <h3>
+          Routine Structures
+        </h3>
+
+        <p>
+          A routine combines related activities into a recognizable
+          sequence while still leaving room to adjust the day when needed.
+        </p>
+
+      </div>
+
+    </div>
+
+    <p>
+      The goal is not necessarily to choose one tool over another. It is to
+      give routines enough structure to account for time without making
+      every part of your day another permanent calendar entry.
+    </p>
+
+    <div class="callout">
+
+      <p>
+        <strong>
+          A useful routine connects what you want to do with when you
+          realistically have time to do it.
+        </strong>
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      One-Time Events, Recurring Events, and Routines
+    </h2>
+
+    <p>
+      It helps to distinguish three different kinds of calendar
+      information.
+    </p>
+
+    <ol>
+
+      <li>
+        <strong>One-time event:</strong>
+        Something that happens once at a specific date and time, such as
+        an appointment on October 14.
+      </li>
+
+      <li>
+        <strong>
+          <a href="./How-to-Use-a-Calendar-for-Repeating-Schedules.html">
+            Recurring event
+          </a>:
+        </strong>
+        An individual item that repeats according to a schedule, such as a
+        payment due on the first day of every month.
+      </li>
+
+      <li>
+        <strong>Routine:</strong>
+        A connected sequence of activities that gives structure to part of
+        a day, such as a morning routine, study session, or evening
+        shutdown.
+      </li>
+
+    </ol>
+
+    <p>
+      These categories can overlap in real life, but thinking about them
+      separately can make it easier to decide how an activity should be
+      represented in your planning system.
+    </p>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Examples of Calendar-Based Routines
+    </h2>
+
+    <p>
+      A routine does not have to describe an entire day. It can simply
+      represent a recurring pattern that helps organize part of your time.
+    </p>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+
+        <h3>
+          Morning Routine
+        </h3>
+
+        <p>
+          A structured sequence containing wake-up time, exercise,
+          breakfast, reading, and preparation for the day.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>
+          Focused Work Routine
+        </h3>
+
+        <p>
+          A dedicated work period followed by planned breaks or a
+          transition into another part of the day.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>
+          Study Routine
+        </h3>
+
+        <p>
+          Study blocks, breaks, review time, and other activities arranged
+          into a repeatable structure.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>
+          Weekly Review
+        </h3>
+
+        <p>
+          A regular planning session for reviewing tasks, checking the
+          upcoming schedule, and preparing the next few days.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      How to Use a Calendar for Routines
+    </h2>
+
+    <p>
+      You do not need to schedule every activity in your life to use a
+      calendar for routines. Start with the parts of your day that benefit
+      most from having a clear place in your schedule.
+    </p>
+
+    <ol>
+
+      <li>
+        <strong>Identify the parts of your day that repeat.</strong>
+        Look for activities or groups of activities that happen regularly,
+        such as getting ready in the morning, studying, exercising, or
+        winding down in the evening.
+      </li>
+
+      <li>
+        <strong>Decide which activities need a specific time.</strong>
+        Some parts of a routine work best as time-based blocks, while
+        others can remain flexible tasks within that period.
+      </li>
+
+      <li>
+        <strong>Group related activities into a routine.</strong>
+        Instead of creating a separate permanent calendar event for every
+        step, combine related activities into a structure that represents
+        the way you actually move through that part of the day.
+      </li>
+
+      <li>
+        <strong>Add the routine to the days where it actually fits.</strong>
+        A routine can be useful without being applied identically to every
+        date. Choose the days when the structure matches your schedule.
+      </li>
+
+      <li>
+        <strong>Leave some flexibility for changes.</strong>
+        Meetings, appointments, travel, and unexpected tasks can change
+        the shape of a day. Leave enough open space to adjust without
+        rebuilding your entire plan.
+      </li>
+
+      <li>
+        <strong>Review and adjust the routine after using it.</strong>
+        Pay attention to where a routine consistently feels too long,
+        too short, or difficult to follow, then change the structure to
+        better match your actual schedule.
+      </li>
+
+    </ol>
+
+    <div class="callout">
+
+      <p>
+        <strong>
+          The purpose of a calendar routine is to make recurring patterns
+          easier to plan, not to make every day identical.
+        </strong>
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      How Remind Me Handles Routines
+    </h2>
+
+    <p>
+      <a
+        href="https://frog1230.itch.io/remind-me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Remind Me
+      </a>
+      is designed around the idea that routines can be reusable structures
+      rather than collections of unrelated calendar entries.
+    </p>
+
+    <p>
+      Instead of forcing every routine to become an ongoing recurring
+      series, Remind Me lets you build a structure and use it when that
+      structure fits your day.
+    </p>
+
+    <h3>
+      1. Build Routines as
+      <a href="./What-Is-a-Calendar-With-Templates.html">
+        Reusable Templates
+      </a>
+    </h3>
+
+    <p>
+      Routines can be saved as templates in the sidebar. A template can
+      represent a complete daily structure or a smaller part of your day.
+    </p>
+
+    <p>
+      For example, templates such as
+      <em>Morning Only</em>,
+      <em>Deep Work</em>,
+      or a custom routine can hold the blocks and tasks that make up that
+      pattern.
+    </p>
+
+    <p>
+      Once the structure exists, you do not need to reconstruct it from
+      scratch every time you want to use it.
+    </p>
+
+    <h3>
+      2. Separate Time Blocks From Individual Tasks
+    </h3>
+
+    <p>
+      Remind Me distinguishes between broader blocks of time and the
+      individual actions that fit within them.
+    </p>
+
+    <ul>
+
+      <li>
+        <strong>Green blocks:</strong>
+        Represent larger time commitments on the schedule, such as
+        <code>09:30 - 11:00</code>.
+      </li>
+
+      <li>
+        <strong>Orange tasks:</strong>
+        Represent more specific actions that belong within the day's
+        structure.
+      </li>
+
+    </ul>
+
+    <p>
+      This separation makes it possible to see both the overall shape of
+      the day and the individual things you need to accomplish.
+    </p>
+
+    <h3>
+      3. Keyboard-Friendly Routine Setup
+    </h3>
+
+    <p>
+      Re-entering the same routine information can become repetitive.
+      Remind Me includes keyboard shortcuts and a built-in 1,000+ word
+      autocomplete dictionary to make entering common task names faster.
+    </p>
+
+    <p>
+      The intention is to keep routine creation focused on building the
+      schedule rather than repeatedly typing the same information.
+    </p>
+
+    <h3>
+      4. Visual Anchors for the Day
+    </h3>
+
+    <p>
+      Remind Me's timeline uses visual markers to make different parts of
+      the day easier to distinguish.
+    </p>
+
+    <p>
+      Natural time cues, including midday markers, help give the schedule a
+      clearer sense of where morning, afternoon, and evening begin and end.
+    </p>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Why Routines Need Room to Change
+    </h2>
+
+    <p>
+      Calendar routines work best when they provide a useful starting
+      point rather than a permanent rule for every future day.
+    </p>
+
+    <p>
+      Meetings move. Plans change. Some days have more capacity than
+      others. A routine that works on a normal Tuesday may need to be
+      shortened, moved, or skipped on another day.
+    </p>
+
+    <p>
+      Reusable templates can help because they provide a reliable
+      structure without requiring the same schedule to remain attached to
+      every future date.
+    </p>
+
+    <div class="callout">
+
+      <p>
+        <strong>
+          Structure does not have to mean rigidity.
+        </strong>
+        A good routine gives you a starting point while leaving room for
+        the reality of a changing day.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Tradeoffs and What Remind Me Does Not Do
+    </h2>
+
+    <p>
+      Remind Me takes a deliberately focused approach to routine planning,
+      which also means it does not try to replace every kind of habit or
+      calendar application.
+    </p>
+
+    <div class="tradeoff-box">
+
+      <h3>
+        What to Keep in Mind
+      </h3>
+
+      <ul>
+
+        <li>
+          <strong>No cloud-based cross-device sync:</strong>
+          Remind Me is designed around local storage and offline planning
+          rather than cloud synchronization between devices.
+        </li>
+
+        <li>
+          <strong>You choose when to use a routine:</strong>
+          Templates provide structure, but you decide which routine belongs
+          on a particular day.
+        </li>
+
+      </ul>
+
+    </div>
+
+    <p>
+      These limits are closely connected to the local-first and focused
+      design of the application. The goal is to make personal planning
+      straightforward rather than build another all-purpose productivity
+      platform.
+    </p>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Building a Sustainable Routine Workflow
+    </h2>
+
+    <p>
+      A useful routine should reflect the time you actually have. Identify
+      the parts of your day that genuinely repeat, give them realistic
+      amounts of time, and group related activities into structures you
+      can reuse.
+    </p>
+
+    <p>
+      Then apply those routines when they fit and adjust them when your
+      schedule changes. The result is a calendar that provides structure
+      without requiring every day to look exactly the same.
+    </p>
+
+  </section>
+
+  <section class="cta">
+
+    <h2>
+      Explore Remind Me
+    </h2>
+
+    <p>
+      Learn more about the project's approach to routines, reusable
+      schedules, and offline planning, or try the planner yourself.
+    </p>
+
+    <div class="cta-actions">
+
+      <a
+        class="button button-primary"
+        href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Explore the Main Website
+      </a>
+
+      <a
+        class="button button-secondary"
+        href="https://frog1230.itch.io/remind-me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download Remind Me
+      </a>
+
+    </div>
+
+  </section>
+
+</article>
+
+
+  </main>
+
+  <footer>
+
+
+<p>
+  &copy; Remind Me. Daily routines made simple.
+  <br>
+
+  <a
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Main Website
+  </a>
+
+  &nbsp;·&nbsp;
+
+  <a
+    href="https://frog1230.itch.io/remind-me"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Download
+  </a>
+</p>
+
+
+  </footer>
+
+</body>
+</html>
