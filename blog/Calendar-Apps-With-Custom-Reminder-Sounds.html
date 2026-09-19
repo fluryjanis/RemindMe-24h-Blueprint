@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="description"
+content="Compare how Google Calendar and Outlook handle notification sounds, what to look for in a calendar app, and how Remind Me uses custom sounds offline."
+
+>
+
+  <link
+    rel="canonical"
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/blog/Calendar-Apps-With-Custom-Reminder-Sounds.html"
+  >
+
+  <title>Calendar Apps With Custom Reminder Sounds | Remind Me</title>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Calendar Apps With Custom Reminder Sounds",
+    "description": "Compare how Google Calendar and Outlook handle notification sounds, what to look for in a calendar app, and how Remind Me uses custom sounds offline.",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://fluryjanis.github.io/RemindMe-24h-Blueprint/blog/Calendar-Apps-With-Custom-Reminder-Sounds.html"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Janis Flury",
+      "url": "https://fluryjanis.github.io/frog1230.github.io/"
+    },
+    "datePublished": "2026-09-19",
+    "dateModified": "2026-09-19"
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #172033;
+      --text-soft: #475569;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --green: #166534;
+      --green-soft: #ecfdf3;
+      --shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hero {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 3rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 1rem;
+      padding: 0.4rem 0.7rem;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      color: #0f172a;
+    }
+
+    .hero-intro {
+      max-width: 720px;
+      margin: 1.5rem 0 0;
+      font-size: 1.15rem;
+      color: var(--text-soft);
+    }
+
+    .hero-meta {
+      margin: 1rem 0 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0.75rem 1.05rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .button-primary:hover {
+      background: var(--accent-dark);
+      color: #ffffff;
+    }
+
+    .button-secondary {
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      background: var(--surface-soft);
+      color: var(--text);
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    article {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1.5rem, 4vw, 3.5rem);
+    }
+
+    .definition {
+      padding: 1.35rem 1.5rem;
+      margin-bottom: 2.5rem;
+      background: var(--accent-soft);
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+    }
+
+    .definition p {
+      margin: 0;
+      font-size: 1.08rem;
+      color: #1e3a8a;
+    }
+
+    .section {
+      margin-top: 3.5rem;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.65rem, 3vw, 2.15rem);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      color: #0f172a;
+    }
+
+    h3 {
+      margin: 2rem 0 0.65rem;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      color: #1e293b;
+    }
+
+    p,
+    li {
+      font-size: 1.03rem;
+      color: var(--text-soft);
+    }
+
+    p {
+      margin: 0 0 1.2rem;
+    }
+
+    ul,
+    ol {
+      margin: 1rem 0 1.5rem;
+      padding-left: 1.3rem;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+      padding-left: 0.2rem;
+    }
+
+    strong {
+      color: #1e293b;
+    }
+
+    .callout {
+      margin: 2rem 0;
+      padding: 1.25rem 1.35rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .callout p {
+      margin: 0;
+      color: #334155;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 1.2rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .feature-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.45rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .comparison-card {
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-soft);
+    }
+
+    .comparison-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-card p {
+      margin: 0 0 0.9rem;
+      font-size: 0.97rem;
+    }
+
+    .comparison-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .source-link {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .first-hand {
+      margin: 2rem 0 0;
+      padding: 1.35rem;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .first-hand p {
+      margin: 0;
+      color: #334155;
+    }
+
+    .tradeoff-box {
+      margin-top: 2rem;
+      padding: 1.35rem;
+      background: var(--green-soft);
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+    }
+
+    .tradeoff-box h3 {
+      margin-top: 0;
+      color: var(--green);
+    }
+
+    .cta {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: linear-gradient(180deg, #f8fbff 0%, #eff6ff 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 0.7rem;
+    }
+
+    .cta p {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 1.35rem;
+    }
+
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 700px) {
+      .site-header {
+        position: static;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      article {
+        padding: 1.4rem;
+      }
+
+      .feature-grid,
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+
+
+  <a
+    class="brand"
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Remind Me
+  </a>
+
+  <div class="nav-links">
+
+    <a
+      href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Main Website
+    </a>
+
+    <a
+      href="https://frog1230.itch.io/remind-me"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Download
+    </a>
+
+  </div>
+</nav>
+
+
+  </header>
+
+  <section class="hero">
+
+
+<p class="eyebrow">
+  Audio Customization &amp; Reminder Alerts
+</p>
+
+<h1>
+  Calendar Apps With Custom Reminder Sounds
+</h1>
+
+<p class="hero-intro">
+  Calendar and reminder apps can handle notification audio in different
+  ways. Some let you select notification tones, some support more direct
+  audio-file customization, and others rely heavily on the notification
+  system of the device or browser.
+</p>
+
+<p class="hero-meta">
+  By Janis Flury · Published September 19, 2026 · Updated September 19, 2026
+</p>
+
+<div class="hero-actions">
+
+  <a
+    class="button button-primary"
+    href="https://frog1230.itch.io/remind-me"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Get Remind Me
+  </a>
+
+  <a
+    class="button button-secondary"
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Visit the Main Website
+  </a>
+
+</div>
+
+
+  </section>
+
+  <main>
+    <article>
+
+
+  <div class="definition">
+
+    <p>
+      <strong>
+        A calendar or reminder app with custom reminder sounds gives you
+        some control over the audio used for its alerts instead of relying
+        entirely on a fixed notification tone.
+      </strong>
+      The exact controls vary between applications and platforms. They can
+      include selectable notification tones, custom audio files,
+      application-level audio controls, or system-managed notification
+      sounds.
+    </p>
+
+  </div>
+
+  <section class="section">
+
+    <h2>
+      How Different Calendar Apps Handle Reminder Sounds
+    </h2>
+
+    <p>
+      “Custom reminder sounds” is not one standardized feature. Calendar
+      applications can expose audio controls at different levels, and
+      those controls can change between mobile, desktop, and web platforms.
+    </p>
+
+    <div class="comparison">
+
+      <div class="comparison-card">
+
+        <h3>
+          Google Calendar on Android
+        </h3>
+
+        <p>
+          Google Calendar's Android notification settings include a sound
+          option. Google's documentation explains that users can open
+          Calendar notifications and select a notification tone and
+          vibration setting.
+        </p>
+
+        <p class="source-link">
+          <a
+            href="https://support.google.com/calendar/answer/37242?co=GENIE.Platform%3DAndroid"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google Calendar notification documentation
+          </a>
+        </p>
+
+      </div>
+
+      <div class="comparison-card">
+
+        <h3>
+          Google Calendar in a Web Browser
+        </h3>
+
+        <p>
+          Google Calendar's browser-based notifications depend on browser
+          notification and sound permissions. Google's documentation
+          explains that Calendar needs browser permission to play
+          notification sounds.
+        </p>
+
+        <p class="source-link">
+          <a
+            href="https://support.google.com/calendar/answer/12200012?hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google Calendar browser notification documentation
+          </a>
+        </p>
+
+      </div>
+
+      <div class="comparison-card">
+
+        <h3>
+          Outlook on Android and iOS
+        </h3>
+
+        <p>
+          Microsoft documents calendar notification sound settings in
+          Outlook for Android and iOS. Users can open Calendar
+          notifications, select Sound, and choose the desired sound.
+        </p>
+
+        <p class="source-link">
+          <a
+            href="https://support.microsoft.com/en-us/outlook/how-do-i-change-mail-or-calendar-sounds"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Microsoft Outlook mobile sound documentation
+          </a>
+        </p>
+
+      </div>
+
+      <div class="comparison-card">
+
+        <h3>
+          Classic Outlook for Windows
+        </h3>
+
+        <p>
+          Classic Outlook for Windows provides a different level of
+          customization. Microsoft documents that calendar, task, and flag
+          reminders can use the default reminder sound or a selected sound
+          file. The volume of Outlook sounds is controlled through Windows
+          sound settings.
+        </p>
+
+        <p class="source-link">
+          <a
+            href="https://support.microsoft.com/en-us/outlook/turn-sound-effects-on-or-off-in-outlook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Microsoft Outlook sound documentation
+          </a>
+        </p>
+
+      </div>
+
+    </div>
+
+    <p>
+      The important distinction is what “custom” means in each case. A
+      notification-tone selector gives you a choice among available
+      sounds, while an application that accepts a sound file provides a
+      different level of customization.
+    </p>
+
+    <p>
+      The same calendar service can expose different notification and audio
+      controls depending on the platform.
+    </p>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      What to Look For in a Calendar App With Custom Reminder Sounds
+    </h2>
+
+    <p>
+      If reminder audio is important to you, it helps to check exactly
+      what kind of customization an application provides.
+    </p>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+
+        <h3>
+          App-Wide Custom Sound
+        </h3>
+
+        <p>
+          One selected sound is used for reminders throughout the
+          application. This can provide a consistent audio identity.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>
+          Per-Calendar or Per-Event Sound
+        </h3>
+
+        <p>
+          Different calendars, reminders, or event types can use different
+          sounds when the application supports that level of customization.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>
+          Custom Audio File
+        </h3>
+
+        <p>
+          Some applications let you select an audio file instead of
+          limiting you to a predefined collection of notification tones.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>
+          System Notification Sound
+        </h3>
+
+        <p>
+          The application may rely on Android, iOS, Windows, macOS, or
+          browser notification settings for how its alerts sound.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>
+          Volume Controls
+        </h3>
+
+        <p>
+          Check whether reminder volume is controlled inside the
+          application or through the device's broader audio and
+          notification settings.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>
+          Platform Support
+        </h3>
+
+        <p>
+          Audio behavior can differ between desktop applications, mobile
+          applications, browsers, and the operating systems they run on.
+        </p>
+
+      </div>
+
+    </div>
+
+    <p>
+      These distinctions matter because “custom sounds” can describe
+      several different implementations. The useful question is what the
+      application actually lets you control.
+    </p>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Why Do Reminder Sounds Matter?
+    </h2>
+
+    <p>
+      A reminder is designed to draw your attention toward something on
+      your schedule. The sound attached to that reminder can therefore
+      become part of how you recognize the alert.
+    </p>
+
+    <p>
+      A distinctive reminder tone can make an alert easier to identify by
+      sound alone, particularly when several applications on the same
+      device can generate notifications. The practical value depends on
+      the person, device, and environment.
+    </p>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      When One Sound Is Not Enough
+    </h2>
+
+    <p>
+      A default notification sound is convenient, but it does not
+      necessarily fit every reminder or every person.
+    </p>
+
+    <p>
+      A single generic sound gives different alerts essentially the same
+      audio identity. That can make the source of an alert harder to
+      distinguish when multiple applications are producing notifications.
+    </p>
+
+    <ul>
+
+      <li>
+        <strong>Alerts can blend together:</strong>
+        Similar tones from different applications can make it harder to
+        immediately identify which application generated the sound.
+      </li>
+
+      <li>
+        <strong>Unexpectedly noticeable alerts can be distracting:</strong>
+        A reminder that is comfortable in one environment may be too
+        noticeable in another.
+      </li>
+
+      <li>
+        <strong>Context can remain on the screen:</strong>
+        When every reminder sounds the same, you may still need to look at
+        the application to understand what the notification represents.
+      </li>
+
+    </ul>
+
+    <div class="callout">
+
+      <p>
+        <strong>
+          The goal is not simply to make reminders louder.
+        </strong>
+        It is to make them recognizable and appropriately noticeable for
+        the environment in which you use them.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      How Remind Me Handles Custom Sounds
+    </h2>
+
+    <p>
+      <a
+        href="https://frog1230.itch.io/remind-me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Remind Me
+      </a>
+      treats notification audio as part of the planner rather than
+      leaving every sound decision to an external notification system.
+    </p>
+
+    <h3>
+      Custom Sound Selection
+    </h3>
+
+    <p>
+      The current Remind Me listing identifies
+      <strong>Custom Sounds</strong> as a product feature. Its development
+      log also documents an update specifically described as
+      “Better Notification Sound (Choose your own sound).”
+    </p>
+
+    <p>
+      Remind Me is currently listed for
+      <strong>Windows, macOS, and Android</strong>, so the exact way audio
+      is handled can depend on the platform where the application is
+      running.
+    </p>
+
+    <div class="first-hand">
+
+      <p>
+        <strong>A note from building Remind Me:</strong>
+        When I added custom sounds, the goal was not to create dozens of
+        notification effects. I wanted the reminder system itself to give
+        the user a choice over its audio identity instead of treating that
+        choice as an unavoidable detail of the operating system.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Custom Sounds vs. System Notifications
+    </h2>
+
+    <p>
+      There is an important difference between customizing a planner's
+      built-in alerts and relying more heavily on the notification system
+      provided by the operating system or browser.
+    </p>
+
+    <div class="comparison">
+
+      <div class="comparison-card">
+
+        <h3>
+          System-Based Alerts
+        </h3>
+
+        <p>
+          System-based alerts rely more heavily on notification settings
+          provided by the operating system, browser, and application.
+          Depending on the platform, those settings can include
+          notification sounds, permissions, and volume behavior.
+        </p>
+
+      </div>
+
+      <div class="comparison-card">
+
+        <h3>
+          App-Level Audio
+        </h3>
+
+        <p>
+          An application can provide its own sound choices or audio
+          behavior, making the reminder experience more specific to that
+          application.
+        </p>
+
+      </div>
+
+    </div>
+
+    <p>
+      Neither approach is universally necessary. The difference is mainly
+      about how much control the application provides over the reminder
+      experience itself.
+    </p>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Tradeoffs and Practical Limits
+    </h2>
+
+    <p>
+      Custom audio also comes with practical limitations, especially for an
+      offline planner.
+    </p>
+
+    <div class="tradeoff-box">
+
+      <h3>
+        What to Keep in Mind
+      </h3>
+
+      <ul>
+
+        <li>
+          <strong>Local audio output:</strong>
+          Remind Me is designed to play reminder sounds locally on the
+          device where the application is running.
+        </li>
+
+        <li>
+          <strong>No cloud-synchronized planner data:</strong>
+          Remind Me is designed around local, offline operation rather than
+          a cloud service that synchronizes planner data between devices.
+        </li>
+
+        <li>
+          <strong>The device must be available:</strong>
+          If the device is powered off or otherwise unable to play audio,
+          local reminders cannot sound.
+        </li>
+
+      </ul>
+
+    </div>
+
+    <p>
+      The current Remind Me listing states that the application runs
+      offline, does not require an internet connection, does not use
+      servers, and stores planner data locally on the device.
+    </p>
+
+  </section>
+
+  <section class="cta">
+
+    <h2>
+      Explore Remind Me
+    </h2>
+
+    <p>
+      Learn more about the project's approach to offline planning,
+      reminders, and customization, or try the planner yourself.
+    </p>
+
+    <div class="cta-actions">
+
+      <a
+        class="button button-primary"
+        href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Explore the Main Website
+      </a>
+
+      <a
+        class="button button-secondary"
+        href="https://frog1230.itch.io/remind-me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download Remind Me
+      </a>
+
+    </div>
+
+  </section>
+
+</article>
+
+
+  </main>
+
+  <footer>
+
+
+<p>
+  &copy; Remind Me. Thoughtful offline planning.
+  <br>
+
+  <a
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Main Website
+  </a>
+
+  &nbsp;·&nbsp;
+
+  <a
+    href="https://frog1230.itch.io/remind-me"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Download
+  </a>
+</p>
+
+
+  </footer>
+
+</body>
+</html>
