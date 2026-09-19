@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="description"
+content="Learn how reusable schedules can make repeating routines easier to manage than rigid recurring events, and see how Remind Me approaches flexible daily planning."
+
+>
+
+  <link
+    rel="canonical"
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/blog/How-To-Use-a-Calendar-for-Repeating-Schedules.html"
+  >
+
+  <title>How to Use a Calendar for Repeating Schedules | Remind Me</title>
+
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #172033;
+      --text-soft: #475569;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --green: #166534;
+      --green-soft: #ecfdf3;
+      --green-border: #86efac;
+      --shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hero {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 3rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 1rem;
+      padding: 0.4rem 0.7rem;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      color: #0f172a;
+    }
+
+    .hero-intro {
+      max-width: 720px;
+      margin: 1.5rem 0 0;
+      font-size: 1.15rem;
+      color: var(--text-soft);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0.75rem 1.05rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .button-primary:hover {
+      background: var(--accent-dark);
+      color: #ffffff;
+    }
+
+    .button-secondary {
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      background: var(--surface-soft);
+      color: var(--text);
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    article {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1.5rem, 4vw, 3.5rem);
+    }
+
+    .definition {
+      padding: 1.35rem 1.5rem;
+      margin-bottom: 2.5rem;
+      background: var(--accent-soft);
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+    }
+
+    .definition p {
+      margin: 0;
+      font-size: 1.08rem;
+      color: #1e3a8a;
+    }
+
+    .section {
+      margin-top: 3.5rem;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.65rem, 3vw, 2.15rem);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      color: #0f172a;
+    }
+
+    h3 {
+      margin: 2rem 0 0.65rem;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      color: #1e293b;
+    }
+
+    p,
+    li {
+      font-size: 1.03rem;
+      color: var(--text-soft);
+    }
+
+    p {
+      margin: 0 0 1.2rem;
+    }
+
+    ul,
+    ol {
+      margin: 1rem 0 1.5rem;
+      padding-left: 1.3rem;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+      padding-left: 0.2rem;
+    }
+
+    strong {
+      color: #1e293b;
+    }
+
+    em {
+      color: #334155;
+    }
+
+    code {
+      padding: 0.15rem 0.35rem;
+      border-radius: 5px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      font-size: 0.9em;
+      color: #334155;
+    }
+
+    .callout {
+      margin: 2rem 0;
+      padding: 1.25rem 1.35rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .callout p {
+      margin: 0;
+      color: #334155;
+    }
+
+    .source-note {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .source-note a {
+      font-weight: 600;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .comparison-card {
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-soft);
+    }
+
+    .comparison-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-card p {
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 1.2rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .feature-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.45rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    .article-image {
+      margin: 2rem 0 2.25rem;
+    }
+
+    .article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .article-image figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .tradeoff-box {
+      margin-top: 2rem;
+      padding: 1.35rem;
+      background: var(--green-soft);
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+    }
+
+    .tradeoff-box h3 {
+      margin-top: 0;
+      color: var(--green);
+    }
+
+    .cta {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: linear-gradient(180deg, #f8fbff 0%, #eff6ff 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 0.7rem;
+    }
+
+    .cta p {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 1.35rem;
+    }
+
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 700px) {
+      .site-header {
+        position: static;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      article {
+        padding: 1.4rem;
+      }
+
+      .comparison,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+
+
+  <a
+    class="brand"
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Remind Me
+  </a>
+
+  <div class="nav-links">
+    <a
+      href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Main Website
+    </a>
+
+    <a
+      href="https://frog1230.itch.io/remind-me"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Download
+    </a>
+  </div>
+
+</nav>
+
+
+  </header>
+
+  <section class="hero">
+
+
+<p class="eyebrow">
+  Repeating Schedules &amp; Daily Routines
+</p>
+
+<h1>
+  How to Use a Calendar for Repeating Schedules
+</h1>
+
+<p class="hero-intro">
+  Repeating routines are easier to manage when you can reuse an entire
+  schedule instead of rebuilding the same collection of events every time.
+  This is where reusable schedules can offer a different approach to
+  traditional recurring events.
+</p>
+
+<div class="hero-actions">
+
+  <a
+    class="button button-primary"
+    href="https://frog1230.itch.io/remind-me"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Get Remind Me
+  </a>
+
+  <a
+    class="button button-secondary"
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Visit the Main Website
+  </a>
+
+</div>
+
+
+  </section>
+
+  <main>
+    <article>
+
+
+  <div class="definition">
+    <p>
+      <strong>
+        A repeating schedule is a reusable pattern of time blocks and tasks
+        that can be applied to multiple days.
+      </strong>
+      Instead of repeatedly rebuilding the same timetable, you can create
+      the structure once and reuse it whenever that routine fits your day.
+    </p>
+  </div>
+
+  <section class="section">
+
+    <h2>
+      The Problem With Traditional Recurring Events
+    </h2>
+
+    <p>
+      Many calendar applications handle repetition at the individual event
+      or task level. You create an event such as <em>Deep Work</em>, choose
+      a recurrence rule, and tell the calendar to repeat it every Monday,
+      every weekday, or every month.
+    </p>
+
+    <p>
+      That approach works well when you have one simple event that truly
+      repeats. Things become more complicated when what you are repeating
+      is an entire routine.
+    </p>
+
+    <p class="source-note">
+      For example, Google Calendar documents repeating events as individual
+      events with a recurrence frequency, and its editing controls let you
+      choose which occurrences a change applies to.
+      <a
+        href="https://support.google.com/calendar/answer/37115"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Google Calendar Help
+      </a>
+    </p>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <h3>Changing One Day</h3>
+
+        <p>
+          If Tuesday needs to start thirty minutes later, you may have to
+          decide whether the change applies only to that occurrence or to
+          the rest of the recurring series.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Managing Multiple Events</h3>
+
+        <p>
+          A simple morning routine could contain several separate events.
+          Changing the structure means editing each event rather than
+          changing one reusable routine.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Alternating Weeks</h3>
+
+        <p>
+          Not every schedule follows the same pattern every week. Rotating
+          shifts, alternating school schedules, and other routines may
+          require more flexibility than a single recurrence rule provides.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Growing Exceptions</h3>
+
+        <p>
+          The more often a recurring series is adjusted, the more
+          individual exceptions can accumulate around the original rule.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Recurring Events vs. Reusable Schedules
+    </h2>
+
+    <p>
+      The two approaches may sound similar, but they solve different
+      problems.
+    </p>
+
+    <div class="comparison">
+
+      <div class="comparison-card">
+        <h3>Recurring Event</h3>
+
+        <p>
+          A single calendar entry linked to a recurrence rule, such as
+          <em>Pay rent on the first day of every month</em>.
+        </p>
+      </div>
+
+      <div class="comparison-card">
+        <h3>Reusable Schedule</h3>
+
+        <p>
+          A complete blueprint containing multiple blocks and tasks that
+          can be applied to whichever dates you choose.
+        </p>
+      </div>
+
+    </div>
+
+    <p>
+      A recurring event says, in effect,
+      <strong>"repeat this event according to this rule."</strong>
+      A reusable schedule instead says,
+      <strong>"this is the structure of this kind of day."</strong>
+    </p>
+
+    <div class="callout">
+
+      <p>
+        <strong>Key idea:</strong>
+        The useful distinction is not simply repetition versus
+        non-repetition. It is whether you are repeating one event or
+        reusing an entire schedule.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Examples of Repeating Schedules
+    </h2>
+
+    <p>
+      Reusable schedules become particularly useful when your days follow
+      recognizable patterns.
+    </p>
+
+    <ul>
+
+      <li>
+        <strong>Shift work:</strong>
+        An early-shift template might run from
+        <code>06:00 - 14:00</code>, while an evening-shift template runs
+        from <code>14:00 - 22:00</code>.
+      </li>
+
+      <li>
+        <strong>Academic schedules:</strong>
+        A student may have one structure for
+        Monday/Wednesday/Friday and another for
+        Tuesday/Thursday.
+      </li>
+
+      <li>
+        <strong>Deep work routines:</strong>
+        A developer or writer might reserve specific parts of certain days
+        for focused work while using a different structure for
+        administrative tasks.
+      </li>
+
+      <li>
+        <strong>Personal routines:</strong>
+        A morning, evening, study, workout, or weekend routine can be
+        stored as a structure and reused when needed.
+      </li>
+
+    </ul>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      How Remind Me Handles Repeating Schedules
+    </h2>
+
+    <p>
+      <a
+        href="https://frog1230.itch.io/remind-me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Remind Me
+      </a>
+      is designed around reusable day patterns. Instead of requiring you
+      to create a long chain of independent recurring events, it lets you
+      create templates and apply them to the dates you choose.
+    </p>
+
+    <p>
+      The idea is to make the schedule itself reusable, rather than making
+      every individual event responsible for managing repetition.
+    </p>
+
+    <figure class="article-image">
+      <img
+        src="./Screenshot%202026-09-16%20174529.png"
+        alt="Remind Me interface showing a reusable schedule template and daily planning workflow"
+        loading="lazy"
+        decoding="async"
+      >
+      <figcaption>
+        Create a reusable schedule once, then apply it to the dates where
+        you need it.
+      </figcaption>
+    </figure>
+
+    <h3>
+      1. Build Modular Day Templates
+    </h3>
+
+    <p>
+      Templates in Remind Me can represent complete routines or portions
+      of a day. Examples such as <em>Morning Only</em> or
+      <em>Deep Work</em> can contain their own collection of time blocks
+      and tasks.
+    </p>
+
+    <p>
+      Once a routine has been defined, it can be reused instead of manually
+      reconstructing the same structure every time.
+    </p>
+
+    <h3>
+      2. Apply the Template to Specific Dates
+    </h3>
+
+    <p>
+      Rather than creating an indefinite recurrence rule, you can apply a
+      template directly to the dates where you want that routine.
+    </p>
+
+    <p>
+      For example, a <em>Morning Only</em> schedule could be applied to
+      three specific dates without those dates having to become part of one
+      permanently linked recurring-event chain.
+    </p>
+
+    <p>
+      This makes it easier to treat your calendar as a collection of
+      planned days rather than a collection of rules that must continue
+      indefinitely.
+    </p>
+
+    <h3>
+      3. Keyboard-Friendly Schedule Creation
+    </h3>
+
+    <p>
+      Remind Me also uses keyboard-focused input to make creating and
+      editing schedule information more direct.
+    </p>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Why Reusable Schedules Can Be Easier to Adjust
+    </h2>
+
+    <p>
+      One advantage of a reusable structure is that it separates the
+      <strong>idea of a routine</strong> from the <strong>date it is used
+      on</strong>.
+    </p>
+
+    <p>
+      Your morning routine can remain a reusable pattern while individual
+      days can still be adjusted around it. That distinction can be useful
+      when life does not follow the exact same schedule every day.
+    </p>
+
+    <p>
+      Instead of asking,
+      <em>"How do I modify this recurring event without affecting the rest
+      of the series?"</em>
+      the workflow becomes,
+      <em>"Which schedule do I want on this day?"</em>
+    </p>
+
+    <div class="callout">
+
+      <p>
+        <strong>
+          Reusability provides flexibility.
+        </strong>
+        The routine can stay consistent while the dates that use it can
+        change.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>
+      Tradeoffs to Keep in Mind
+    </h2>
+
+    <p>
+      Reusable schedules are not a replacement for every kind of calendar
+      workflow. They make different tradeoffs from cloud-based recurring
+      event systems.
+    </p>
+
+    <div class="tradeoff-box">
+
+      <h3>
+        What This Approach Gives Up
+      </h3>
+
+      <ul>
+
+        <li>
+          <strong>No automatic infinite repetition:</strong>
+          Remind Me does not continuously populate your calendar years into
+          the future based on one recurrence rule. You intentionally apply
+          templates where you need them.
+        </li>
+
+        <li>
+          <strong>No external calendar synchronization:</strong>
+          Because Remind Me is designed to operate offline and keep data
+          local, schedules do not automatically synchronize with external
+          third-party calendars.
+        </li>
+
+      </ul>
+
+    </div>
+
+    <p>
+      Those limitations are part of the design. The goal is not to recreate
+      every feature of a large collaborative calendar platform. It is to
+      provide a simpler way to create and reuse personal schedules.
+    </p>
+
+    <p>
+      For people who also want a simpler interface, see our guide to
+      <a
+        href="/blog/What-Is-a-Clutter-Free-Calendar.html"
+      >
+        clutter-free calendars
+      </a>.
+    </p>
+
+  </section>
+
+  <section class="cta">
+
+    <h2>
+      Explore Remind Me
+    </h2>
+
+    <p>
+      Learn more about Remind Me, explore the project's design, or try the
+      offline planner yourself.
+    </p>
+
+    <div class="cta-actions">
+
+      <a
+        class="button button-primary"
+        href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Explore the Main Website
+      </a>
+
+      <a
+        class="button button-secondary"
+        href="https://frog1230.itch.io/remind-me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download Remind Me
+      </a>
+
+    </div>
+
+  </section>
+
+</article>
+
+
+  </main>
+
+  <footer>
+
+
+<p>
+  &copy; Remind Me. Fast, offline schedule management.
+  <br>
+
+  <a
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Main Website
+  </a>
+
+  &nbsp;·&nbsp;
+
+  <a
+    href="https://frog1230.itch.io/remind-me"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Download
+  </a>
+</p>
+
+
+  </footer>
+
+</body>
+</html>
