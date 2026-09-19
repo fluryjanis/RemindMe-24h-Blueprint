@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="What is a calendar with templates? Learn how reusable schedule blueprints can reduce planning friction, what calendar templates contain, and how to use them in Remind Me."
+  >
+
+  <link
+    rel="canonical"
+    href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/blog/What-Is-a-Calendar-With-Templates.html"
+  >
+
+  <title>What Is a Calendar With Templates? | Remind Me</title>
+
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #172033;
+      --text-soft: #475569;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --green: #166534;
+      --green-soft: #ecfdf3;
+      --green-border: #86efac;
+      --shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hero {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 3rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 1rem;
+      padding: 0.4rem 0.7rem;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      color: #0f172a;
+    }
+
+    .hero-intro {
+      max-width: 720px;
+      margin: 1.5rem 0 0;
+      font-size: 1.15rem;
+      color: var(--text-soft);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0.75rem 1.05rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .button-primary:hover {
+      background: var(--accent-dark);
+      color: #ffffff;
+    }
+
+    .button-secondary {
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      background: var(--surface-soft);
+      color: var(--text);
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    article {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1.5rem, 4vw, 3.5rem);
+    }
+
+    .definition {
+      padding: 1.35rem 1.5rem;
+      margin-bottom: 1rem;
+      background: var(--accent-soft);
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+    }
+
+    .definition p {
+      margin: 0;
+      font-size: 1.08rem;
+      color: #1e3a8a;
+    }
+
+    .intent-note {
+      margin-bottom: 2.5rem;
+      padding: 1rem 1.15rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .intent-note p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: var(--text-soft);
+    }
+
+    .section {
+      margin-top: 3.5rem;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.65rem, 3vw, 2.15rem);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      color: #0f172a;
+    }
+
+    h3 {
+      margin: 2rem 0 0.65rem;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      color: #1e293b;
+    }
+
+    p,
+    li {
+      font-size: 1.03rem;
+      color: var(--text-soft);
+    }
+
+    p {
+      margin: 0 0 1.2rem;
+    }
+
+    ul,
+    ol {
+      margin: 1rem 0 1.5rem;
+      padding-left: 1.3rem;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+      padding-left: 0.2rem;
+    }
+
+    strong {
+      color: #1e293b;
+    }
+
+    em {
+      color: #334155;
+    }
+
+    code {
+      padding: 0.15rem 0.35rem;
+      border-radius: 5px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      font-size: 0.9em;
+      color: #334155;
+    }
+
+    .callout {
+      margin: 2rem 0;
+      padding: 1.25rem 1.35rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .callout p {
+      margin: 0;
+      color: #334155;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 1.5rem;
+    }
+
+    .comparison-card {
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-soft);
+    }
+
+    .comparison-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-card p {
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 1.2rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .feature-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.45rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .step-card {
+      padding: 1.2rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .step-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.45rem;
+    }
+
+    .step-card p {
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    .screenshot {
+      margin: 2rem 0;
+    }
+
+    .screenshot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+    }
+
+    .screenshot figcaption {
+      margin-top: 0.8rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .tradeoff-box {
+      margin-top: 2rem;
+      padding: 1.35rem;
+      background: var(--green-soft);
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+    }
+
+    .tradeoff-box h3 {
+      margin-top: 0;
+      color: var(--green);
+    }
+
+    .internal-link {
+      margin-top: 1.5rem;
+      padding: 1rem 1.15rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .internal-link p {
+      margin: 0;
+      font-size: 0.98rem;
+    }
+
+    .cta {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: linear-gradient(180deg, #f8fbff 0%, #eff6ff 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 0.7rem;
+    }
+
+    .cta p {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 1.35rem;
+    }
+
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 700px) {
+      .site-header {
+        position: static;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      article {
+        padding: 1.4rem;
+      }
+
+      .comparison,
+      .feature-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+
+      <a
+        class="brand"
+        href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Remind Me
+      </a>
+
+      <div class="nav-links">
+
+        <a
+          href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Main Website
+        </a>
+
+        <a
+          href="https://frog1230.itch.io/remind-me"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download
+        </a>
+
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+
+    <p class="eyebrow">
+      Reusable Schedule Templates
+    </p>
+
+    <h1>
+      What Is a Calendar With Templates?
+    </h1>
+
+    <p class="hero-intro">
+      A calendar with templates lets you save the structure of a routine and
+      reuse it whenever you need it. Instead of rebuilding the same day from
+      an empty calendar, you start with a schedule that already fits the way
+      you work.
+    </p>
+
+    <div class="hero-actions">
+
+      <a
+        class="button button-primary"
+        href="https://frog1230.itch.io/remind-me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get Remind Me
+      </a>
+
+      <a
+        class="button button-secondary"
+        href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Visit the Main Website
+      </a>
+
+    </div>
+
+  </section>
+
+  <main>
+    <article>
+
+      <div class="definition">
+
+        <p>
+          <strong>
+            A calendar with templates is a planning tool that lets you save
+            groups of time blocks and tasks as reusable schedule blueprints.
+          </strong>
+          Instead of creating every part of a familiar routine from scratch,
+          you can start with a template and adjust it to fit the day.
+        </p>
+
+      </div>
+
+      <div class="intent-note">
+
+        <p>
+          <strong>In this article, “calendar templates” means reusable
+          schedules inside a calendar or planner</strong>
+          — not printable calendar files or blank monthly calendar layouts.
+        </p>
+
+      </div>
+
+      <section class="section">
+
+        <h2>
+          The Problem With a Blank Calendar
+        </h2>
+
+        <p>
+          A blank calendar gives you complete freedom, but that freedom can
+          also mean repeating the same setup work whenever a familiar routine
+          needs to be planned.
+        </p>
+
+        <p>
+          Imagine that a typical workday includes a morning routine, a focused
+          work session, lunch, an afternoon block, and an evening shutdown
+          routine. If those structures are recreated manually, planning itself
+          becomes a task.
+        </p>
+
+        <ol>
+
+          <li>
+            You repeatedly create the same time blocks and tasks.
+          </li>
+
+          <li>
+            You rewrite descriptions that have already been written before.
+          </li>
+
+          <li>
+            You spend time setting up your schedule instead of simply adjusting
+            it for the day ahead.
+          </li>
+
+        </ol>
+
+        <div class="callout">
+
+          <p>
+            <strong>
+              A template takes a different approach:
+            </strong>
+            create the structure once, save it, and reuse it whenever that
+            structure fits the day.
+          </p>
+
+        </div>
+
+      </section>
+
+      <section class="section">
+
+        <h2>
+          What Is a Calendar Template?
+        </h2>
+
+        <p>
+          A calendar template works like a blueprint for a particular kind of
+          day or routine. It describes the structure you want without requiring
+          you to rebuild that structure every time you use it.
+        </p>
+
+        <p>
+          A template is usually reusable rather than tied permanently to one
+          specific date. That makes it possible to keep a collection of
+          familiar schedule structures and choose the one that fits.
+        </p>
+
+        <div class="feature-grid">
+
+          <div class="feature-card">
+
+            <h3>
+              Time Blocks
+            </h3>
+
+            <p>
+              Defined intervals such as
+              <code>09:30 - 11:00</code>
+              for focused work or
+              <code>12:00 - 13:45</code>
+              for lunch and a walk.
+            </p>
+
+          </div>
+
+          <div class="feature-card">
+
+            <h3>
+              Tasks
+            </h3>
+
+            <p>
+              Specific actions that belong inside or alongside the larger
+              schedule structure.
+            </p>
+
+          </div>
+
+          <div class="feature-card">
+
+            <h3>
+              A Recognizable Pattern
+            </h3>
+
+            <p>
+              A meaningful name such as
+              <em>Deep Work Day</em>,
+              <em>Morning Routine</em>,
+              or
+              <em>Weekend Reset</em>
+              makes the purpose of the template clear.
+            </p>
+
+          </div>
+
+          <div class="feature-card">
+
+            <h3>
+              Reusability
+            </h3>
+
+            <p>
+              Once the structure is saved, you can use it again without
+              manually rebuilding every block.
+            </p>
+
+          </div>
+
+        </div>
+
+        <p>
+          The template is therefore not necessarily the schedule for one
+          particular date. It is the reusable structure behind that schedule.
+        </p>
+
+      </section>
+
+      <section class="section">
+
+        <h2>
+          What Can You Use Calendar Templates For?
+        </h2>
+
+        <p>
+          Templates are useful when your schedule contains several recognizable
+          types of days or routines.
+        </p>
+
+        <div class="feature-grid">
+
+          <div class="feature-card">
+
+            <h3>
+              Morning Routine
+            </h3>
+
+            <p>
+              Wake up, exercise, read, eat, and prepare for the day.
+            </p>
+
+          </div>
+
+          <div class="feature-card">
+
+            <h3>
+              Focused Workday
+            </h3>
+
+            <p>
+              Several dedicated work blocks separated by breaks and other
+              planned activities.
+            </p>
+
+          </div>
+
+          <div class="feature-card">
+
+            <h3>
+              Study Day
+            </h3>
+
+            <p>
+              Study sessions, breaks, meals, and planned review time.
+            </p>
+
+          </div>
+
+          <div class="feature-card">
+
+            <h3>
+              Weekend Reset
+            </h3>
+
+            <p>
+              Household chores, shopping, planning, and preparation for the
+              coming week.
+            </p>
+
+          </div>
+
+        </div>
+
+        <p>
+          The value of the template is not that every day must follow it
+          exactly. The value is that familiar structures can be reused without
+          starting from an empty calendar every time.
+        </p>
+
+      </section>
+
+      <section class="section">
+
+        <h2>
+          How Do You Use a Calendar Template?
+        </h2>
+
+        <p>
+          A simple template workflow separates the reusable structure from the
+          date where you eventually use it.
+        </p>
+
+        <div class="steps">
+
+          <div class="step-card">
+
+            <h3>
+              1. Create
+            </h3>
+
+            <p>
+              Build the schedule structure you want to reuse, including its
+              time blocks and tasks.
+            </p>
+
+          </div>
+
+          <div class="step-card">
+
+            <h3>
+              2. Save
+            </h3>
+
+            <p>
+              Give the structure a recognizable name and keep it available as
+              a reusable template.
+            </p>
+
+          </div>
+
+          <div class="step-card">
+
+            <h3>
+              3. Apply
+            </h3>
+
+            <p>
+              Add the template to a date when that kind of schedule fits what
+              you need to do.
+            </p>
+
+          </div>
+
+          <div class="step-card">
+
+            <h3>
+              4. Adjust
+            </h3>
+
+            <p>
+              Change the details for the specific day without having to rebuild
+              the entire schedule from scratch.
+            </p>
+
+          </div>
+
+        </div>
+
+        <p>
+          This approach keeps the reusable blueprint separate from the
+          individual day. The template provides a starting structure, while
+          the actual calendar entry can still be changed.
+        </p>
+
+      </section>
+
+      <section class="section">
+
+        <h2>
+          How Remind Me Uses Calendar Templates
+        </h2>
+
+        <p>
+          <a
+            href="https://frog1230.itch.io/remind-me"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Remind Me
+          </a>
+          treats reusable schedules as a central part of its planning
+          workflow. The idea is to make familiar schedule structures easy to
+          build once and reuse across the monthly calendar.
+        </p>
+
+        <figure class="screenshot">
+
+          <img
+            src="./Screenshot%202026-09-18%20235146.png"
+            alt="Remind Me interface showing the reusable calendar template manager and template editing controls"
+            loading="lazy"
+          >
+
+          <figcaption>
+            Reusable schedule templates: Remind Me lets you build a schedule
+            structure once and reuse it on the dates where it fits.
+          </figcaption>
+
+        </figure>
+
+        <h3>
+          A Dedicated Template Collection
+        </h3>
+
+        <p>
+          Saved templates are available from the sidebar, giving you a
+          persistent collection of the routines you use most often.
+        </p>
+
+        <p>
+          A template can represent a complete routine or a smaller section of
+          a day. This makes it possible to build a library of schedule
+          structures rather than starting from a blank calendar every time.
+        </p>
+
+        <h3>
+          A Visual Template Editor
+        </h3>
+
+        <p>
+          Remind Me provides a dedicated editor for building reusable
+          structures before they are placed onto individual calendar dates.
+        </p>
+
+        <ul>
+
+          <li>
+            <strong>Blocks and tasks:</strong>
+            Create larger time-based blocks alongside more specific task
+            items.
+          </li>
+
+          <li>
+            <strong>Inline time controls:</strong>
+            Adjust start and end times directly within the schedule structure.
+          </li>
+
+          <li>
+            <strong>Reusable structures:</strong>
+            Keep multiple blocks and tasks together as one schedule that can be
+            reused as a starting point.
+          </li>
+
+        </ul>
+
+        <h3>
+          Apply Templates to the Monthly Calendar
+        </h3>
+
+        <p>
+          Once a template exists, it can be applied to the dates where you
+          need it.
+        </p>
+
+        <p>
+          For example, a
+          <em>Morning Only</em>
+          template could be placed on several dates throughout a month without
+          requiring those dates to become one permanently repeating schedule.
+        </p>
+
+        <p>
+          This keeps the reusable structure separate from the dates on which
+          you happen to use it.
+        </p>
+
+      </section>
+
+      <section class="section">
+
+        <h2>
+          Calendar Templates vs. Recurring Events
+        </h2>
+
+        <p>
+          Calendar templates and recurring events can both reduce repetitive
+          work, but they solve different planning problems.
+        </p>
+
+        <div class="comparison">
+
+          <div class="comparison-card">
+
+            <h3>
+              Recurring Event
+            </h3>
+
+            <p>
+              Repeats a calendar item according to a recurrence rule.
+            </p>
+
+          </div>
+
+          <div class="comparison-card">
+
+            <h3>
+              Calendar Template
+            </h3>
+
+            <p>
+              Saves a reusable schedule structure that can be applied when
+              needed.
+            </p>
+
+          </div>
+
+        </div>
+
+        <p>
+          A recurring event is primarily about
+          <strong>
+            when an item should recur
+          </strong>.
+          A calendar template is primarily about
+          <strong>
+            what a reusable schedule structure contains
+          </strong>.
+        </p>
+
+        <div class="internal-link">
+
+          <p>
+            <strong>
+              Want a deeper explanation of the distinction?
+            </strong>
+            Read our guide to
+            <a
+              href="./How-to-Use-a-Calendar-for-Repeating-Schedules.html"
+            >
+              repeating schedules
+            </a>
+            for a more detailed discussion of recurrence and reusable
+            schedules.
+          </p>
+
+        </div>
+
+      </section>
+
+      <section class="section">
+
+        <h2>
+          The Benefits of Reusable Calendar Templates
+        </h2>
+
+        <p>
+          Reusable templates can shift some of the work of planning from
+          repeated data entry to preparation.
+        </p>
+
+        <p>
+          Instead of repeatedly creating the same structure, you spend the
+          effort once designing a routine that can then serve as a starting
+          point for future days.
+        </p>
+
+        <p>
+          This can be particularly useful when your schedule is structured
+          enough to have recognizable patterns, but flexible enough that you do
+          not want those patterns locked into every future date.
+        </p>
+
+        <div class="callout">
+
+          <p>
+            <strong>
+              Reusability does not mean rigidity.
+            </strong>
+            A template can provide a familiar starting structure while still
+            leaving room to change the schedule for the day in front of you.
+          </p>
+
+        </div>
+
+      </section>
+
+      <section class="section">
+
+        <h2>
+          Tradeoffs and Limitations
+        </h2>
+
+        <p>
+          A template-driven calendar also makes deliberate tradeoffs.
+        </p>
+
+        <div class="tradeoff-box">
+
+          <h3>
+            What This Approach Means
+          </h3>
+
+          <ul>
+
+            <li>
+              <strong>Templates require intentional use:</strong>
+              A template does not automatically decide which type of day you
+              are going to have. You choose when to apply it.
+            </li>
+
+            <li>
+              <strong>No external schedule collection:</strong>
+              Templates are not automatically generated from meetings,
+              invitations, emails, or other calendar services.
+            </li>
+
+            <li>
+              <strong>Local storage:</strong>
+              In Remind Me, templates are stored locally rather than being
+              synchronized through an external cloud service.
+            </li>
+
+          </ul>
+
+        </div>
+
+        <p>
+          These tradeoffs are closely connected to the overall design goal:
+          keeping personal planning straightforward rather than turning the
+          application into a full collaborative calendar platform.
+        </p>
+
+      </section>
+
+      <section class="section">
+
+        <h2>
+          Moving From Blank Grids to Reusable Blueprints
+        </h2>
+
+        <p>
+          A blank calendar is flexible, but flexibility does not always need to
+          mean starting from zero.
+        </p>
+
+        <p>
+          When your days contain familiar routines, a reusable template gives
+          you a starting structure while leaving room to change the details.
+        </p>
+
+        <p>
+          That can make planning feel less like repeatedly filling out a form
+          and more like assembling a day from pieces you have already designed.
+        </p>
+
+        <p>
+          That is the core idea behind
+          <a
+            href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Remind Me
+          </a>:
+          reusable schedules provide structure without requiring every day to
+          be identical.
+        </p>
+
+      </section>
+
+      <section class="cta">
+
+        <h2>
+          Explore Remind Me
+        </h2>
+
+        <p>
+          Learn more about the project and its approach to reusable planning,
+          or try the offline planner yourself.
+        </p>
+
+        <div class="cta-actions">
+
+          <a
+            class="button button-primary"
+            href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Explore the Main Website
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="https://frog1230.itch.io/remind-me"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download Remind Me
+          </a>
+
+        </div>
+
+      </section>
+
+    </article>
+  </main>
+
+  <footer>
+
+    <p>
+      &copy; Remind Me. An offline, template-driven planner.
+      <br>
+
+      <a
+        href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Main Website
+      </a>
+
+      &nbsp;·&nbsp;
+
+      <a
+        href="https://frog1230.itch.io/remind-me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download
+      </a>
+    </p>
+
+  </footer>
+
+</body>
+</html>
+
