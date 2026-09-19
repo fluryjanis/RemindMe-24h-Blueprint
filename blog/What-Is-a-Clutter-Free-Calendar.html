@@ -6,7 +6,7 @@
 
   <meta
     name="description"
-    content="What is a clutter-free calendar? Explore how simpler planning interfaces reduce visual overload and how Remind Me approaches calm, focused daily planning."
+    content="What is a clutter-free calendar? Explore how simpler planning interfaces make schedules easier to understand and how Remind Me approaches focused daily planning."
   >
 
   <title>What Is a Clutter-Free Calendar? | Remind Me</title>
@@ -25,7 +25,6 @@
       --accent-soft: #eff6ff;
       --green: #166534;
       --green-soft: #ecfdf3;
-      --green-border: #86efac;
       --shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
       --radius: 16px;
     }
@@ -318,6 +317,36 @@
       font-size: 0.97rem;
     }
 
+    .screenshot-figure {
+      margin: 2rem 0 2.25rem;
+      padding: 1rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .screenshot-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 680px;
+      object-fit: contain;
+      margin: 0;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .screenshot-figure figcaption {
+      margin: 0.85rem 0.2rem 0;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .screenshot-figure figcaption strong {
+      color: #334155;
+    }
+
     .tradeoff-box {
       margin-top: 2rem;
       padding: 1.35rem;
@@ -404,6 +433,10 @@
 
       .button {
         width: 100%;
+      }
+
+      .screenshot-figure {
+        padding: 0.7rem;
       }
     }
   </style>
@@ -549,9 +582,9 @@
 
         <p>
           Simplicity is not simply a matter of using white space, soft colors,
-          or rounded corners. A genuinely simpler interface reduces the amount
-          of information you have to process before you can understand what is
-          happening.
+          or rounded corners. A genuinely simpler interface makes it easier to
+          understand what is happening without making you sort through
+          unnecessary information first.
         </p>
 
         <p>A clutter-free planning interface might focus on a few principles:</p>
@@ -592,6 +625,25 @@
       </section>
 
       <section class="section">
+        <h2>Is a Clutter-Free Calendar the Same as a Minimalist Calendar?</h2>
+
+        <p>
+          Not necessarily. A minimalist calendar may focus on reducing features
+          or visual elements. A clutter-free calendar can still provide useful
+          functionality while keeping those features from competing for
+          attention when they are not needed.
+        </p>
+
+        <p>
+          This distinction matters because a planning tool can be feature-rich
+          without looking or behaving like an all-purpose dashboard. The goal
+          is not to remove useful capabilities simply to make the interface
+          look empty; it is to make those capabilities easier to use at the
+          moment they matter.
+        </p>
+      </section>
+
+      <section class="section">
         <h2>How Remind Me Approaches Clutter-Free Planning</h2>
 
         <p>
@@ -610,6 +662,19 @@
         <p>
           That philosophy influences several parts of the interface.
         </p>
+
+        <figure class="screenshot-figure">
+          <img
+            src="./Proxy%20UI%20showcase.gif"
+            alt="Remind Me interface showing the planner and its editing controls"
+            loading="lazy"
+          >
+          <figcaption>
+            <strong>Remind Me UI:</strong>
+            The interface keeps the schedule itself visually central instead of
+            surrounding it with unrelated controls.
+          </figcaption>
+        </figure>
 
         <h3>1. A Clear Separation Between Overview and Detail</h3>
 
@@ -653,6 +718,20 @@
           </li>
         </ul>
 
+        <figure class="screenshot-figure">
+          <img
+            src="./Proxy%20UI%20showcase.gif"
+            alt="Remind Me Template Editor showing controls positioned near the schedule block they affect"
+            loading="lazy"
+          >
+          <figcaption>
+            <strong>Proximity-based editing:</strong>
+            Remind Me keeps editing controls close to the schedule blocks they
+            affect, making the relationship between an action and its target
+            visible in the interface itself.
+          </figcaption>
+        </figure>
+
         <h3>3. Visual Anchors for the Day</h3>
 
         <p>
@@ -684,7 +763,7 @@
       </section>
 
       <section class="section">
-        <h2>Clutter-Free Design Has Tradeoffs</h2>
+        <h2>The Tradeoffs of a Simpler Calendar</h2>
 
         <p>
           A simpler interface does not automatically mean a better interface
@@ -693,7 +772,7 @@
         </p>
 
         <div class="tradeoff-box">
-          <h3>What Remind Me Gives Up</h3>
+          <h3>What Remind Me Does Not Try to Do</h3>
 
           <ul>
             <li>
