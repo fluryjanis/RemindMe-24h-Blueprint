@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="What is a clutter-free calendar? Explore how simpler planning interfaces reduce visual overload and how Remind Me approaches calm, focused daily planning."
+  >
+
+  <title>What Is a Clutter-Free Calendar? | Remind Me</title>
+
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #172033;
+      --text-soft: #475569;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --green: #166534;
+      --green-soft: #ecfdf3;
+      --green-border: #86efac;
+      --shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hero {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 3rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 1rem;
+      padding: 0.4rem 0.7rem;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      color: #0f172a;
+    }
+
+    .hero-intro {
+      max-width: 720px;
+      margin: 1.5rem 0 0;
+      font-size: 1.15rem;
+      color: var(--text-soft);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0.75rem 1.05rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .button-primary:hover {
+      background: var(--accent-dark);
+      color: #ffffff;
+    }
+
+    .button-secondary {
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      background: var(--surface-soft);
+      color: var(--text);
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    article {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1.5rem, 4vw, 3.5rem);
+    }
+
+    .definition {
+      padding: 1.35rem 1.5rem;
+      margin-bottom: 2.5rem;
+      background: var(--accent-soft);
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+    }
+
+    .definition p {
+      margin: 0;
+      font-size: 1.08rem;
+      color: #1e3a8a;
+    }
+
+    .section {
+      margin-top: 3.5rem;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.65rem, 3vw, 2.15rem);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      color: #0f172a;
+    }
+
+    h3 {
+      margin: 2rem 0 0.65rem;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      color: #1e293b;
+    }
+
+    p,
+    li {
+      font-size: 1.03rem;
+      color: var(--text-soft);
+    }
+
+    p {
+      margin: 0 0 1.2rem;
+    }
+
+    ul {
+      margin: 1rem 0 1.5rem;
+      padding-left: 1.3rem;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+      padding-left: 0.2rem;
+    }
+
+    strong {
+      color: #1e293b;
+    }
+
+    em {
+      color: #334155;
+    }
+
+    code {
+      padding: 0.15rem 0.35rem;
+      border-radius: 5px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      font-size: 0.9em;
+      color: #334155;
+    }
+
+    .callout {
+      margin: 2rem 0;
+      padding: 1.25rem 1.35rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .callout p {
+      margin: 0;
+      color: #334155;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 1.2rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .feature-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.45rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    .tradeoff-box {
+      margin-top: 2rem;
+      padding: 1.35rem;
+      background: var(--green-soft);
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+    }
+
+    .tradeoff-box h3 {
+      margin-top: 0;
+      color: var(--green);
+    }
+
+    .cta {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: linear-gradient(180deg, #f8fbff 0%, #eff6ff 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 0.7rem;
+    }
+
+    .cta p {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 1.35rem;
+    }
+
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 700px) {
+      .site-header {
+        position: static;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      article {
+        padding: 1.4rem;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a
+        class="brand"
+        href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Remind Me
+      </a>
+
+      <div class="nav-links">
+        <a
+          href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Main Website
+        </a>
+
+        <a
+          href="https://frog1230.itch.io/remind-me"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">Calendar Design &amp; Focused Planning</p>
+
+    <h1>What Is a Clutter-Free Calendar?</h1>
+
+    <p class="hero-intro">
+      A clutter-free calendar is more than a minimalist-looking interface.
+      It is a planning system designed to make your schedule easy to understand
+      without forcing you to sort through information you do not need.
+    </p>
+
+    <div class="hero-actions">
+      <a
+        class="button button-primary"
+        href="https://frog1230.itch.io/remind-me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get Remind Me
+      </a>
+
+      <a
+        class="button button-secondary"
+        href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Visit the Main Website
+      </a>
+    </div>
+  </section>
+
+  <main>
+    <article>
+
+      <div class="definition">
+        <p>
+          <strong>A clutter-free calendar is a planning interface that keeps
+          the information you need visible while reducing unnecessary visual
+          noise.</strong>
+          Instead of trying to be a complete communication and collaboration
+          platform, it can focus on one job: helping you understand and manage
+          your time.
+        </p>
+      </div>
+
+      <section class="section">
+        <h2>Why Do Digital Calendars Feel So Overwhelming?</h2>
+
+        <p>
+          Many modern calendar applications are designed to do far more than
+          display a schedule. They may also handle meetings, invitations,
+          shared calendars, video calls, notifications, contacts, integrations,
+          and other forms of collaboration.
+        </p>
+
+        <p>
+          Those features can be useful, but they also mean that a simple
+          calendar view can contain a lot of competing information.
+        </p>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>Too Much Navigation</h3>
+            <p>
+              Sidebars, mini calendars, account controls, subscribed calendars,
+              and integrations can compete with the schedule itself.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Too Much Metadata</h3>
+            <p>
+              A single event may contain attendees, locations, meeting links,
+              reminders, status information, and repeating-event details.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Too Many Controls</h3>
+            <p>
+              Creating or editing one item can involve forms, menus, dialogs,
+              permissions, notifications, and other settings.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Too Much Competition for Attention</h3>
+            <p>
+              When every part of the interface is asking to be noticed, the
+              actual schedule can become harder to read at a glance.
+            </p>
+          </div>
+        </div>
+
+        <p>
+          The problem is not necessarily that these features are bad. The
+          problem is that they can become visually important even when they
+          are irrelevant to the immediate task.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>What Does a Simpler Calendar Look Like?</h2>
+
+        <p>
+          Simplicity is not simply a matter of using white space, soft colors,
+          or rounded corners. A genuinely simpler interface reduces the amount
+          of information you have to process before you can understand what is
+          happening.
+        </p>
+
+        <p>A clutter-free planning interface might focus on a few principles:</p>
+
+        <ul>
+          <li>
+            <strong>Visual breathing room:</strong>
+            Empty time should look like empty time rather than another layer
+            of visual clutter.
+          </li>
+
+          <li>
+            <strong>Contextual controls:</strong>
+            Actions should appear near the item they affect instead of forcing
+            you to search through unrelated menus.
+          </li>
+
+          <li>
+            <strong>Clear time orientation:</strong>
+            The interface should make it easy to understand where you are in
+            the day without requiring constant mental calculations.
+          </li>
+
+          <li>
+            <strong>Progressive detail:</strong>
+            Information that is not immediately important can remain out of
+            the way until you actually need it.
+          </li>
+        </ul>
+
+        <div class="callout">
+          <p>
+            <strong>Key idea:</strong>
+            Simplicity does not mean removing every feature. It means keeping
+            unnecessary visual weight out of the way until it is useful.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How Remind Me Approaches Clutter-Free Planning</h2>
+
+        <p>
+          <a
+            href="https://frog1230.itch.io/remind-me"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Remind Me
+          </a>
+          is an offline, keyboard-driven daily planner built around a simple
+          idea: your planning interface should help you focus on your day
+          instead of becoming another source of distraction.
+        </p>
+
+        <p>
+          That philosophy influences several parts of the interface.
+        </p>
+
+        <h3>1. A Clear Separation Between Overview and Detail</h3>
+
+        <p>
+          In the monthly view, the goal is to understand the shape of your
+          schedule without filling every day with tiny blocks of unreadable
+          information.
+        </p>
+
+        <p>
+          Instead, higher-level routine templates and important schedule
+          blocks can provide a quick overview of what your month looks like.
+          This makes the calendar easier to scan before you move into the
+          details of a particular day.
+        </p>
+
+        <h3>2. Controls Where You Actually Need Them</h3>
+
+        <p>
+          Remind Me uses proximity-based controls in its Template Editor.
+          Instead of separating every action into another panel, important
+          controls stay close to the block they affect.
+        </p>
+
+        <ul>
+          <li>
+            Start and end times such as
+            <code>09 : 30 - 11 : 00</code>
+            can be edited directly within the schedule block.
+          </li>
+
+          <li>
+            A block can be removed using the inline
+            <code>✕</code>
+            control associated with that item.
+          </li>
+
+          <li>
+            The time ruler can be adjusted so you can expand or compress the
+            schedule depending on your screen and preferred density.
+          </li>
+        </ul>
+
+        <h3>3. Visual Anchors for the Day</h3>
+
+        <p>
+          Time-based interfaces can become surprisingly difficult to scan when
+          every hour looks identical. Remind Me uses visual anchors to help
+          distinguish different parts of the day and make the time ruler easier
+          to interpret.
+        </p>
+
+        <p>
+          The goal is simple: you should be able to look at your schedule and
+          understand roughly where you are in the day without having to stop
+          and decode the interface.
+        </p>
+
+        <h3>4. No Cloud Layer in the Interface</h3>
+
+        <p>
+          Remind Me is designed to work offline and store your data locally.
+          That also means the interface does not need to devote space to things
+          such as account management, synchronization status, or connection
+          warnings.
+        </p>
+
+        <p>
+          For people who primarily need a personal planning tool, removing
+          those layers can make the experience feel quieter and more direct.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Clutter-Free Design Has Tradeoffs</h2>
+
+        <p>
+          A simpler interface does not automatically mean a better interface
+          for everyone. Reducing complexity often means deliberately giving up
+          features that are valuable in other workflows.
+        </p>
+
+        <div class="tradeoff-box">
+          <h3>What Remind Me Gives Up</h3>
+
+          <ul>
+            <li>
+              <strong>No collaborative scheduling:</strong>
+              It is not built around sending calendar invitations, checking
+              other people's availability, or coordinating team meetings.
+            </li>
+
+            <li>
+              <strong>No cloud synchronization:</strong>
+              Your data stays on your local machine, so it is not intended for
+              automatic schedule mirroring across multiple devices.
+            </li>
+
+            <li>
+              <strong>No automatic schedule collection:</strong>
+              Your day is based on what you intentionally put into the planner,
+              rather than information collected from emails, work systems, or
+              external services.
+            </li>
+          </ul>
+        </div>
+
+        <p>
+          Those limitations are part of the design rather than accidental
+          omissions. A tool can be simpler precisely because it is not trying
+          to solve every scheduling problem at once.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Who Is a Clutter-Free Calendar For?</h2>
+
+        <p>
+          This approach can make sense for people who primarily want to see
+          their own schedule, establish routines, and protect focused time
+          without needing a large collaboration platform.
+        </p>
+
+        <p>
+          That can include solo professionals, developers, writers, students,
+          creators, and anyone who prefers a more focused planning environment.
+        </p>
+
+        <p>
+          The important distinction is not whether a person wants a
+          "minimalist" calendar. It is whether they need all of the complexity
+          that many full-featured calendar systems place around the basic act
+          of planning a day.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Clutter-Free Does Not Mean Feature-Free</h2>
+
+        <p>
+          The central idea behind clutter-free planning is not to remove useful
+          functionality. It is to decide which information deserves attention
+          at any given moment.
+        </p>
+
+        <p>
+          A good planning interface can still contain schedules, templates,
+          reminders, controls, and customization. The difference is that those
+          features do not all need to compete for your attention at the same
+          time.
+        </p>
+
+        <p>
+          For Remind Me, that means treating the calendar as a workspace first,
+          rather than turning it into an all-purpose communication platform.
+        </p>
+      </section>
+
+      <section class="cta">
+        <h2>Explore Remind Me</h2>
+
+        <p>
+          Learn more about the project, its design philosophy, and the planner
+          itself—or try the application for yourself.
+        </p>
+
+        <div class="cta-actions">
+          <a
+            class="button button-primary"
+            href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Explore the Main Website
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="https://frog1230.itch.io/remind-me"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download Remind Me
+          </a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>
+      &copy; Remind Me. An offline, privacy-first daily planner.
+      <br>
+      <a
+        href="https://fluryjanis.github.io/RemindMe-24h-Blueprint/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Main Website
+      </a>
+      &nbsp;·&nbsp;
+      <a
+        href="https://frog1230.itch.io/remind-me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download
+      </a>
+    </p>
+  </footer>
+
+</body>
+</html>
